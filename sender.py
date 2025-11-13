@@ -10,6 +10,7 @@ class InflightTracker:
         self.inflight_dependencies: SortedList[int] = SortedList()
         self.highest_ack = -1
         # TODO: discard old states and dependencies
+        # not important for correctness, just efficiency
 
     def acked(self, state_number: int) -> None:
         all_acked = []
