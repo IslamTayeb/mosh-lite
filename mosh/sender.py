@@ -3,10 +3,12 @@ from state import State
 from transport import Transporter, TransportInstruction
 import socket
 
-current_state = State("")
+
+states = {} # for now we store all states
+states[0] = State("")
 inflight = InflightTracker()
 transport = None
-next_state_num = 0
+next_state_num = 1
 
 def on_receive(instruction: TransportInstruction):
     print("\nReceived packet from receiver:")
@@ -14,17 +16,19 @@ def on_receive(instruction: TransportInstruction):
     inflight.acked(instruction.ack_num)
 
 def on_send(new_state: State, inf: InflightTracker):
-    global current_state, transport, next_state_num
-    diff = current_state.generate_patch(new_state)
-    old_num = next_state_num
-    new_num = old_num + 1
-    next_state_num = new_num
+    # instead of only relying on the last state
+    # we rely on the last acked state
+    global states, transport, next_state_num
+    old_num = inf.highest_ack
+    diff = states[old_num].generate_patch(new_state)
+    new_num = next_state_num
+    next_state_num += 1
 
-    print(f"\nSending: State #{old_num} -> #{new_num} ('{current_state.string}' -> '{new_state.string}')")
+    print(f"\nSending: State #{old_num} -> #{new_num} ('{states[old_num].string}' -> '{new_state.string}')")
     print(f"  Diff: {diff}")
 
-    transport.send(old_num, new_num, -1, -1, diff)
-    inf.sent(new_num, old_num - 1 if old_num > 0 else None)
+    transport.send(old_num, new_num, inf.highest_ack, min(0, inf.highest_ack - 1, (inf.min_inflight_dependency() if inf.min_inflight_dependency() is not None else float('inf')) - 1), diff)
+    inf.sent(new_num, old_num)
     current_state = new_state
 
 def init(host, port):
