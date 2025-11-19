@@ -9,10 +9,15 @@ import socket
 class Transporter:
     def __init__(self, host: Optional[str], port: Optional[int], on_receive):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.seq = 0 # this is the number of packets we have sent
-        self.last_timestamp: Optional[float] = None # this is the last timestamp we received from the other party
+        self.seq = 0
+        self.last_timestamp: Optional[float] = None
         self.on_receive = on_receive
         self.other_addr: Optional[tuple] = (host, port) if (host is not None and port is not None) else None
+        self.current_signal_strength = -50
+        self.remote_signal_strength = -50
+
+    def set_signal_strength(self, dbm: int):
+        self.current_signal_strength = dbm
 
     def send(self, old_num: int, new_num: int, ack_num: int, throwaway_num: int, diff: str) -> None:
         assert self.other_addr is not None, "Other address must be initialized to send"
@@ -21,7 +26,7 @@ class Transporter:
         curr_timestamp = int(1000 * time.time()) & 0xFFFF
         old_timestamp = self.last_timestamp or 0
         direction = True
-        packet = Packet(direction, self.seq, curr_timestamp, old_timestamp, payload)
+        packet = Packet(direction, self.seq, curr_timestamp, old_timestamp, self.current_signal_strength, payload)
         self.seq += 1
         self.socket.sendto(packet.pack(), self.other_addr)
 
@@ -30,12 +35,13 @@ class Transporter:
         self.other_addr = addr
         packet = Packet.unpack(raw_response)
         self.last_timestamp = packet.ts
+        self.remote_signal_strength = packet.signal_strength_dbm
         self.on_receive(TransportInstruction.unmarshal(packet.payload.decode('utf-8')))
 
 @dataclass
 class TransportInstruction:
     old_num: int
-    new_num: int 
+    new_num: int
     ack_num: int
     throwaway_num: int
     diff: str
@@ -45,7 +51,7 @@ class TransportInstruction:
 
     @staticmethod
     def unmarshal(json_str: str) -> 'TransportInstruction':
-        return TransportInstruction(**json.loads(json_str)) 
+        return TransportInstruction(**json.loads(json_str))
 
 
 if __name__ == "__main__":
@@ -59,4 +65,3 @@ if __name__ == "__main__":
     assert t.old_num == t2.old_num
     assert t.new_num == t2.new_num
     assert t.throwaway_num == t2.throwaway_num
-

@@ -27,21 +27,21 @@ def main():
 
     for i, step in enumerate(scenario.get('steps', [])):
         duration = step['duration_s']
-        print(f"\n[PHASE {i+1}] Duration: {duration}s - {step.get('description', '')}")
+        signal_dbm = step.get('signal_strength_dbm', -50)
+        print(f"\n[PHASE {i+1}] Duration: {duration}s - Signal: {signal_dbm}dBm - {step.get('description', '')}")
+
+        sender.transport.set_signal_strength(signal_dbm)
 
         phase_start = time.time()
         msg_idx = 0
 
         while time.time() - phase_start < duration:
-            # Send state update
             from state import State
             new_state = State(test_messages[msg_idx % len(test_messages)])
             sender.on_send(new_state, sender.inflight)
-
-            # Receive any ACKs
             sender.receive_acks()
 
-            time.sleep(0.5)  # Send every 500ms
+            time.sleep(0.5)
             msg_idx += 1
 
     print("\n[MOSH CLIENT] Test complete")

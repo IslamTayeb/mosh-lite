@@ -40,7 +40,7 @@ def send_ack(ack_num: int):
     ack_ti = TransportInstruction(0, 0, ack_num, -1, ack_diff)
     payload = ack_ti.marshall().encode('utf-8')
     curr_ts = int(1000 * time.time()) & 0xFFFF
-    ack_packet = Packet(False, ack_seq, curr_ts, 0, payload)
+    ack_packet = Packet(False, ack_seq, curr_ts, 0, -50, payload)
     ack_seq += 1
     print(f"  ACK packet: old=0, new=0, ack_num={ack_num} (acknowledging State #{ack_num})")
     socket_obj.sendto(ack_packet.pack(), sender_addr)
@@ -56,5 +56,6 @@ def receive_loop():
         data, addr = socket_obj.recvfrom(1500)
         sender_addr = addr
         packet = Packet.unpack(data)
+        print(f"  Signal: {packet.signal_strength_dbm}dBm")
         instruction = TransportInstruction.unmarshal(packet.payload.decode('utf-8'))
         on_receive(instruction)

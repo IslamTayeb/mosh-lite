@@ -11,6 +11,7 @@
       "jitter_ms": 5,
       "loss_pct": 0,
       "rate_kbit": 10000,
+      "signal_strength_dbm": -35,
       "description": "Good link: low latency, no loss, 10Mbps"
     },
     {
@@ -19,6 +20,7 @@
       "jitter_ms": 50,
       "loss_pct": 5,
       "rate_kbit": 1000,
+      "signal_strength_dbm": -80,
       "description": "Bad link: high latency, 5% loss, 1Mbps"
     },
     {
@@ -27,6 +29,7 @@
       "jitter_ms": 10,
       "loss_pct": 1,
       "rate_kbit": 5000,
+      "signal_strength_dbm": -40,
       "description": "Recovery: medium latency, low loss, 5Mbps"
     }
   ]
