@@ -3,6 +3,7 @@ from state import State
 from transport import Transporter, TransportInstruction
 import socket
 import random
+import time
 
 states = {} # for now we store all states
 states[0] = State("")
@@ -30,7 +31,7 @@ def on_send(new_state: State, inf: InflightTracker):
     assumed_receiver_state_num: int = next_state_num - 1
     known_receiver_state_num: int = inf.highest_ack
 
-    if time.time() - states[assumed_receiver_state_num].time_sent < TIMEOUT_THRESHOLD:
+    if states[assumed_receiver_state_num].time_sent is not None and time.time() - states[assumed_receiver_state_num].time_sent < TIMEOUT_THRESHOLD:
         old_num = random.choices([assumed_receiver_state_num, known_receiver_state_num], weights=[LAMBDA, 1 - LAMBDA], k = 1)[0]
     else:
         old_num = known_receiver_state_num
@@ -39,7 +40,7 @@ def on_send(new_state: State, inf: InflightTracker):
     diff = states[old_num].generate_patch(new_state)
     new_num = next_state_num
     next_state_num += 1
-
+    states[new_num] = new_state
     print(f"\nSending: State #{old_num} -> #{new_num} ('{states[old_num].string}' -> '{new_state.string}')")
     print(f"  Diff: {diff}")
 
