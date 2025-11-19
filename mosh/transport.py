@@ -7,12 +7,12 @@ from datagram import Packet
 import socket
 
 class Transporter:
-    def __init__(self, host: Optional[str], port: Optional[int], on_receive: Callable[['TransportInstruction'], None]):
+    def __init__(self, other_host: Optional[str], other_port: Optional[int], on_receive: Callable[['TransportInstruction'], None]):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.seq = 0
         self.last_timestamp: Optional[float] = None
         self.on_receive = on_receive
-        self.other_addr: Optional[tuple] = (host, port) if (host is not None and port is not None) else None
+        self.other_addr: Optional[tuple] = (other_host, other_port) if (other_host is not None and other_port is not None) else None
         self.current_signal_strength = -50
         self.remote_signal_strength = -50
 
