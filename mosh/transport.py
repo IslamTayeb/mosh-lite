@@ -2,12 +2,12 @@ import json
 from dataclasses import dataclass
 import difflib
 import time
-from typing import Optional
+from typing import Optional, Callable
 from datagram import Packet
 import socket
 
 class Transporter:
-    def __init__(self, host: Optional[str], port: Optional[int], on_receive):
+    def __init__(self, host: Optional[str], port: Optional[int], on_receive: Callable[['TransportInstruction'], None]):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.seq = 0
         self.last_timestamp: Optional[float] = None

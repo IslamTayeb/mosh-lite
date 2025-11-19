@@ -1,17 +1,16 @@
 from state import State
-from transport import TransportInstruction
+from transport import TransportInstruction, Transporter
 from datagram import Packet
 import socket
 import time
+from typing import Optional
 
-states = {0: State("")}
-socket_obj = None
-sender_addr = None
-highest_received = -1
-ack_seq = 0
+states: dict[int, State] = {0: State("")}
+transport: Optional[Transporter] = None
+highest_received = 0
 
-def on_receive(instruction: TransportInstruction):
-    global highest_received, sender_addr
+def on_receive(instruction: TransportInstruction) -> None:
+    global highest_received
 
     print(f"\nReceived: State #{instruction.old_num} -> #{instruction.new_num}")
     print(f"  Diff: {instruction.diff}")
@@ -23,39 +22,20 @@ def on_receive(instruction: TransportInstruction):
         states[instruction.new_num] = new_state
         print(f"  Result: '{old_state.string}' -> '{new_state.string}'")
 
-        if instruction.new_num > highest_received:
-            highest_received = instruction.new_num
+        highest_received = max(highest_received, instruction.new_num)
 
-        send_ack(instruction.new_num)
+        empty_diff = states[0].generate_patch(states[0])
+        transport.send(0, 0, instruction.new_num, instruction.new_num, empty_diff)
         print(f"  Sent ACK for State #{instruction.new_num}")
     else:
+        # TODO: Support for depending on instructions that are still in the pipeline
         print(f"  ERROR: State #{instruction.old_num} not found")
 
-def send_ack(ack_num: int):
-    global socket_obj, sender_addr, ack_seq
-    if sender_addr is None:
-        return
-
-    ack_diff = State("").generate_patch(State(""))
-    ack_ti = TransportInstruction(0, 0, ack_num, -1, ack_diff)
-    payload = ack_ti.marshall().encode('utf-8')
-    curr_ts = int(1000 * time.time()) & 0xFFFF
-    ack_packet = Packet(False, ack_seq, curr_ts, 0, -50, payload)
-    ack_seq += 1
-    print(f"  ACK packet: old=0, new=0, ack_num={ack_num} (acknowledging State #{ack_num})")
-    socket_obj.sendto(ack_packet.pack(), sender_addr)
-
 def init(port):
-    global socket_obj
-    socket_obj = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    socket_obj.bind(('', port))
+    global transport
+    transport = Transporter(None, None, on_receive)
+    transport.socket.bind(('', port))
 
 def receive_loop():
-    global sender_addr
     while True:
-        data, addr = socket_obj.recvfrom(1500)
-        sender_addr = addr
-        packet = Packet.unpack(data)
-        print(f"  Signal: {packet.signal_strength_dbm}dBm")
-        instruction = TransportInstruction.unmarshal(packet.payload.decode('utf-8'))
-        on_receive(instruction)
+        transport.recv()
