@@ -1,5 +1,7 @@
 import difflib
 import json
+import time
+from typing import Optional
 
 class State:
     curr_stateno = 1
@@ -7,7 +9,10 @@ class State:
         self.string = s
         self.num = State.curr_stateno
         State.curr_stateno += 1
+        self.time_sent: Optional[float] = None
 
+    def mark_sent(self) -> None:
+        self.time_sent = time.time()
 
     def generate_patch(self, other: 'State'):
         """Generate a self-contained patch from old -> new."""
