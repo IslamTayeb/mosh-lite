@@ -33,9 +33,9 @@ export SCENARIO_FILE
 
 # Launch appropriate role
 if [ "$ROLE" = "server" ]; then
-    echo "[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] Starting UDP server on port $UDP_PORT"
-    exec python3 /app/udp_server.py
+    echo "[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] Starting MOSH server on port $UDP_PORT"
+    exec python3 /app/mosh_server.py
 else
-    echo "[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] Starting UDP client, connecting to $PEER_NAME:$UDP_PORT"
-    exec python3 /app/udp_client.py
+    echo "[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] Starting MOSH client, connecting to $PEER_NAME:$UDP_PORT"
+    exec python3 /app/mosh_client.py
 fi
