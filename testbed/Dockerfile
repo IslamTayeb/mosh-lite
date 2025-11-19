@@ -10,6 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # - jq: JSON parsing (used by scripts)
 RUN apt-get update && apt-get install -y \
     python3 \
+    python3-pip \
     iproute2 \
     iputils-ping \
     tcpdump \
@@ -19,9 +20,13 @@ RUN apt-get update && apt-get install -y \
 # Create directories
 RUN mkdir -p /var/log /tmp /artifacts
 
-# Copy and set up application
-COPY app/ /app/
+# Copy mosh library and application
+COPY mosh/ /app/mosh/
+COPY testbed/app/ /app/
 RUN chmod +x /app/*.sh /app/*.py
+
+# Install Python dependencies for mosh
+RUN pip3 install --no-cache-dir -r /app/mosh/requirements.txt --break-system-packages
 
 WORKDIR /app
 
