@@ -33,8 +33,7 @@ def on_receive(instruction: TransportInstruction) -> None:
 
 def init(port):
     global transport
-    transport = Transporter(None, None, on_receive)
-    transport.socket.bind(('', port))
+    transport = Transporter('', port, None, None, on_receive)
 
 def receive_loop():
     while True:

@@ -33,8 +33,7 @@ def on_send(new_state: State, inf: InflightTracker):
 
 def init(host, port):
     global transport
-    transport = Transporter(host, port, on_receive)
-    transport.socket.bind(('', 0))
+    transport = Transporter('', 0, host, port, on_receive)
 
 def receive_acks():
     transport.socket.settimeout(0.1)

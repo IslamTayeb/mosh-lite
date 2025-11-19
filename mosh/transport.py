@@ -7,8 +7,9 @@ from datagram import Packet
 import socket
 
 class Transporter:
-    def __init__(self, other_host: Optional[str], other_port: Optional[int], on_receive: Callable[['TransportInstruction'], None]):
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    def __init__(self, binding_host: str, binding_port: int other_host: Optional[str], other_port: Optional[int], on_receive: Callable[['TransportInstruction'], None]):
+        self.socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.socket.bind((binding_host, binding_port))
         self.seq = 0
         self.last_timestamp: Optional[float] = None
         self.on_receive = on_receive
