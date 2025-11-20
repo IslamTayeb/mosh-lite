@@ -1,8 +1,11 @@
 import asyncio
 import sys
+import termios
+import tty
 import sender
 from transport import TransportInstruction, Transporter
 from dataclasses import dataclass
+import logging
 
 @dataclass
 class LocalEvent:
@@ -12,20 +15,36 @@ class LocalEvent:
 class RemoteEvent:
     instruction: TransportInstruction
 
+@dataclass
+class TerminationEvent:
+    pass
+
 async def keyboard_listener(queue):
     loop = asyncio.get_running_loop()
     reader = asyncio.StreamReader()
     protocol = asyncio.StreamReaderProtocol(reader)
     await loop.connect_read_pipe(lambda: protocol, sys.stdin)
-
-    while True:
-        # TODO: Switch terminal to raw mode so we're not buffered 
-        line = await reader.readline()
-        if not line:
-            continue
-
-        await queue.put(LocalEvent(message=line.decode().rstrip())) 
-
+    
+    fd = sys.stdin.fileno()
+    original_settings = termios.tcgetattr(fd)
+    tty.setraw(fd)
+    input_buffer = []
+    try:
+        while True:
+            # TODO: Switch terminal to raw mode so we're not buffered 
+            ch = await reader.read(1)
+            if not ch:
+                continue
+            c = ch.decode(errors='ignore')
+            if c == '\x03':
+                await queue.put(TerminationEvent())
+                break
+            input_buffer.append(ch.decode(errors='ignore'))
+            sys.stdout.write(c)
+            sys.stdout.flush()
+            await queue.put(LocalEvent(message="".join(input_buffer)))
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, original_settings)
 
 async def network_listener(t: Transporter, queue):
     loop = asyncio.get_running_loop()
@@ -38,14 +57,18 @@ async def event_processor(queue):
         ev = await queue.get()
 
         if isinstance(ev, LocalEvent):
-            print(f'Keyboard event: {ev.message}')
+            logging.debug(f'Keyboard event: {ev.message}')
             sender.send_message(ev.message)
 
         elif isinstance(ev, RemoteEvent):
-            print(f'Network event: {ev.instruction}')
+            logging.debug(f'Network event: {ev.instruction}')
 
             sender.on_receive(ev.instruction)
-
+        else:
+            logging.error("QUITTING")
+            for task in asyncio.all_tasks():
+                task.cancel()
+            return
 async def main():
     queue = asyncio.Queue()
     sender.init('127.0.0.1', 53001) 
@@ -56,5 +79,8 @@ async def main():
         )
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        pass
 
