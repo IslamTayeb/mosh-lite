@@ -6,6 +6,13 @@ from typing import Optional, Callable
 from datagram import Packet
 import socket
 
+# copied from the lab
+MinRTO = 0.05
+G = 0.1
+K = 4
+alpha = 0.125
+beta = 0.25
+
 class Transporter:
     def __init__(self, binding_host: str, binding_port: int, other_host: Optional[str], other_port: Optional[int]):
         self.socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -16,6 +23,9 @@ class Transporter:
         self.other_addr: Optional[tuple] = (other_host, other_port) if (other_host is not None and other_port is not None) else None
         self.current_signal_strength = -50
         self.remote_signal_strength = -50
+        self.srtt: Optional[float] = None
+        self.rttvar: Optional[float] = None
+        self.rto: Optional[float] = None
 
     def fileno(self):
         return self.socket.fileno()
@@ -26,6 +36,21 @@ class Transporter:
         packet = Packet.unpack(raw)
         self.last_timestamp = packet.ts
         self.remote_signal_strength = packet.signal_strength_dbm
+
+        # this is technically non-sensical on the receiver end
+        # w/e fix later
+        # RTO estimation copied from our TCP lab (lab 1)
+
+        R = time.time() - packet.ts_reply
+        if self.rttvar is None:
+            self.srtt = R
+            self.rttvar = R / 2
+            self.rto = self.srtt + max(G, K * self.rttvar)
+        else:
+            self.rttvar = (1 - beta) * self.rttvar + beta * abs(self.srtt - R)
+            self.srtt = (1 - alpha) * self.srtt + alpha * R
+            self.rto = self.srtt + max(G, K * self.rttvar)
+
         return TransportInstruction.unmarshal(packet.payload.decode('utf-8'))
 
     def set_signal_strength(self, dbm: int):
