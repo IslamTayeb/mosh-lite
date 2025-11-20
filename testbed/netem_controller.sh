@@ -7,6 +7,8 @@ SCENARIO_FILE=""
 TARGETS=""
 CONTROLLER_LOG="artifacts/controller_log.txt"
 INTERFACE="eth0"
+SENTINEL_FILE="artifacts/netem_ready.json"
+SENTINEL_DELAY=2  # seconds to wait after applying rules before signaling ready
 
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
@@ -59,6 +61,24 @@ log_message() {
     echo "[$timestamp] $msg" | tee -a "$CONTROLLER_LOG"
 }
 
+write_sentinel() {
+    local step=$1
+    local total_steps=$2
+    local timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+    # Write sentinel file that applications can watch for
+    # This file is in artifacts/ which is mounted in all containers
+    cat > "$SENTINEL_FILE" <<EOF
+{
+  "step": $step,
+  "total_steps": $total_steps,
+  "timestamp": "$timestamp",
+  "ready": true
+}
+EOF
+    log_message "Sentinel file updated: step $step/$total_steps"
+}
+
 # Cleanup function to reset qdiscs
 cleanup() {
     log_message "Cleaning up tc qdiscs..."
@@ -66,6 +86,11 @@ cleanup() {
         log_message "Resetting qdisc on $target"
         docker exec "$target" tc qdisc del dev "$INTERFACE" root 2>/dev/null || true
     done
+
+    # Remove sentinel file
+    rm -f "$SENTINEL_FILE"
+    log_message "Sentinel file removed"
+
     log_message "Cleanup complete"
     exit 0
 }
@@ -177,8 +202,19 @@ for ((i=0; i<num_steps; i++)); do
         apply_tc_rule "$target" "$delay" "$jitter" "$loss" "$rate" "$INTERFACE"
     done
 
-    log_message "Waiting ${duration}s before next step..."
-    sleep "$duration"
+    # Wait for tc rules to fully propagate before signaling ready
+    log_message "Waiting ${SENTINEL_DELAY}s for tc rules to stabilize..."
+    sleep "$SENTINEL_DELAY"
+
+    # Signal that network conditions are ready
+    write_sentinel "$((i+1))" "$num_steps"
+
+    # Adjust duration to account for sentinel delay
+    remaining_duration=$((duration - SENTINEL_DELAY))
+    if [ $remaining_duration -gt 0 ]; then
+        log_message "Waiting ${remaining_duration}s before next step..."
+        sleep "$remaining_duration"
+    fi
 done
 
 log_message ""

@@ -48,8 +48,8 @@ def calculate_statistics(latency: dict[int, float]) -> dict[str, float]:
 
 
 def main():
-    client_log = parse_csv("a.csv")
-    server_log = parse_csv("b.csv")
+    client_log = parse_csv("client_out.log")
+    server_log = parse_csv("output.log")
 
     latency = calculate_latency(client_log, server_log)
     stats = calculate_statistics(latency)

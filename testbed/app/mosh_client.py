@@ -32,11 +32,31 @@ async def network_listener(t: Transporter, queue):
         instruction = await t.async_recv(loop)
         await queue.put(RemoteEvent(instruction))
 
+def wait_for_network_ready(sentinel_path='/artifacts/netem_ready.json', timeout=60):
+    """Wait for netem controller to signal network is ready"""
+    print(f"[CLIENT] Waiting for network conditions to be ready...")
+    start_time = time.time()
+
+    while time.time() - start_time < timeout:
+        if os.path.exists(sentinel_path):
+            try:
+                with open(sentinel_path, 'r') as f:
+                    sentinel = json.load(f)
+                if sentinel.get('ready', False):
+                    print(f"[CLIENT] Network ready: step {sentinel['step']}/{sentinel['total_steps']}")
+                    return sentinel
+            except (json.JSONDecodeError, IOError) as e:
+                # File might be mid-write, try again
+                pass
+        time.sleep(0.5)
+
+    raise TimeoutError(f"Network conditions not ready after {timeout}s")
+
 async def automated_writer(queue, delay=0.05):
     states = ['abc', 'cde', 'edf', 'adsfhadsf', 'fgi']
 
     for state in states:
-        await queue.put(LocalEvent(message=state))    
+        await queue.put(LocalEvent(message=state))
         await asyncio.sleep(delay)
 
     await queue.put(TerminationEvent())
@@ -70,6 +90,10 @@ def hook(fout, stateno):
 async def main():
     SERVER_HOST = os.getenv("PEER_NAME", "server")
     UDP_PORT = int(os.getenv("UDP_PORT", "5000"))
+
+    # Wait for network conditions to be ready
+    print(f"[CLIENT] Starting mosh client")
+    wait_for_network_ready()
 
     sender.init(SERVER_HOST, UDP_PORT)
 
