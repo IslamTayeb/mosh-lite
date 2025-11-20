@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   server:
-    build: .
+    build: 
+      context: ..
+      dockerfile: testbed/Dockerfile
     container_name: server
     hostname: server
     cap_add:
@@ -17,11 +19,14 @@ services:
     volumes:
       - ./artifacts:/artifacts
       - ./scenarios:/scenarios:ro
+      - ./logs:/logs
     stdin_open: true
     tty: true
 
   client:
-    build: .
+    build: 
+      context: ..
+      dockerfile: testbed/Dockerfile 
     container_name: client
     hostname: client
     cap_add:
@@ -35,6 +40,7 @@ services:
       - UDP_PORT=1337
       - SCENARIO_FILE=${SCENARIO_FILE:-/scenarios/variable_link.json}
     volumes:
+      - ./logs:/logs
       - ./artifacts:/artifacts
       - ./scenarios:/scenarios:ro
     stdin_open: true

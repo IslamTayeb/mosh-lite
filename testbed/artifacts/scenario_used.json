@@ -7,7 +7,7 @@
   "steps": [
     {
       "duration_s": 10,
-      "delay_ms": 20,
+      "delay_ms": 150,
       "jitter_ms": 5,
       "loss_pct": 0,
       "rate_kbit": 10000,
@@ -23,7 +23,7 @@
     },
     {
       "duration_s": 10,
-      "delay_ms": 50,
+      "delay_ms": 150,
       "jitter_ms": 10,
       "loss_pct": 1,
       "rate_kbit": 5000,
