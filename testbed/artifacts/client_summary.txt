@@ -2,17 +2,17 @@
 UDP CLIENT TEST RESULTS
 ================================================================================
 
-Test Time: 2025-11-20T03:28:58.612300Z
+Test Time: 2025-11-20T03:41:27.858717Z
 Server: server:1337
 Scenario: Variable Link Quality
 
 OVERALL RESULTS
 --------------------------------------------------------------------------------
-Total Packets Sent:     2728
-Total Packets Received: 2543
+Total Packets Sent:     2779
+Total Packets Received: 2594
 Total Packets Lost:     185
-Overall Loss:           6.78%
-Mean Latency:           163.745ms
+Overall Loss:           6.66%
+Mean Latency:           162.278ms
 
 PER-PHASE RESULTS
 ================================================================================
@@ -27,17 +27,17 @@ Network Conditions:
   Duration:  10s
 
 Results:
-  Packets Sent:     917
-  Packets Received: 913
-  Packets Lost:     4 (0.44%)
+  Packets Sent:     928
+  Packets Received: 926
+  Packets Lost:     2 (0.22%)
 
   Latency Statistics:
-    Min:    0.179ms
-    Max:    62.403ms
-    Mean:   25.878ms
-    Median: 33.715ms
-    StdDev: 20.156ms
-    Jitter: 5.394ms
+    Min:    0.163ms
+    Max:    65.212ms
+    Mean:   26.127ms
+    Median: 34.531ms
+    StdDev: 20.086ms
+    Jitter: 5.219ms
 
 Phase 2: Bad link: high latency, 5% loss, 1Mbps
 --------------------------------------------------------------------------------
@@ -49,17 +49,17 @@ Network Conditions:
   Duration:  10s
 
 Results:
-  Packets Sent:     885
-  Packets Received: 802
-  Packets Lost:     83 (9.38%)
+  Packets Sent:     929
+  Packets Received: 843
+  Packets Lost:     86 (9.26%)
 
   Latency Statistics:
-    Min:    12.963ms
-    Max:    626.406ms
-    Mean:   201.724ms
-    Median: 56.634ms
-    StdDev: 180.680ms
-    Jitter: 40.241ms
+    Min:    9.629ms
+    Max:    589.562ms
+    Mean:   221.626ms
+    Median: 217.975ms
+    StdDev: 182.442ms
+    Jitter: 44.805ms
 
 Phase 3: Recovery: medium latency, low loss, 5Mbps
 --------------------------------------------------------------------------------
@@ -71,16 +71,16 @@ Network Conditions:
   Duration:  10s
 
 Results:
-  Packets Sent:     926
-  Packets Received: 828
-  Packets Lost:     98 (10.58%)
+  Packets Sent:     922
+  Packets Received: 825
+  Packets Lost:     97 (10.52%)
 
   Latency Statistics:
-    Min:    33.453ms
-    Max:    579.970ms
-    Mean:   263.634ms
-    Median: 292.710ms
-    StdDev: 157.446ms
-    Jitter: 49.541ms
+    Min:    31.349ms
+    Max:    610.178ms
+    Mean:   239.080ms
+    Median: 128.162ms
+    StdDev: 155.865ms
+    Jitter: 43.721ms
 
 ================================================================================
