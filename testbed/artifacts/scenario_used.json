@@ -1,33 +1,33 @@
 {
-  "scenario_name": "Quick Test",
-  "description": "Short test for rapid iteration - 3 phases of 5 seconds each",
+  "scenario_name": "Variable Link Quality",
+  "description": "Simulates changing network conditions: good -> bad -> good",
   "created_by": "netem_testbed",
-  "seed": 100,
-  "notes": "Total duration: 15 seconds. Good for development and quick validation.",
+  "seed": 42,
+  "notes": "10s good link, 10s degraded link with high latency and loss, 10s recovery",
   "steps": [
     {
-      "duration_s": 5,
-      "delay_ms": 10,
-      "jitter_ms": 2,
+      "duration_s": 10,
+      "delay_ms": 20,
+      "jitter_ms": 5,
       "loss_pct": 0,
       "rate_kbit": 10000,
-      "description": "Baseline: minimal latency, no loss"
+      "description": "Good link: low latency, no loss, 10Mbps"
     },
     {
-      "duration_s": 5,
-      "delay_ms": 100,
-      "jitter_ms": 20,
+      "duration_s": 10,
+      "delay_ms": 200,
+      "jitter_ms": 50,
       "loss_pct": 5,
       "rate_kbit": 1000,
-      "description": "Degraded: 100ms delay, 5% loss, 1Mbps"
+      "description": "Bad link: high latency, 5% loss, 1Mbps"
     },
     {
-      "duration_s": 5,
+      "duration_s": 10,
       "delay_ms": 50,
       "jitter_ms": 10,
-      "loss_pct": 2,
+      "loss_pct": 1,
       "rate_kbit": 5000,
-      "description": "Recovery: 50ms delay, 2% loss, 5Mbps"
+      "description": "Recovery: medium latency, low loss, 5Mbps"
     }
   ]
 }

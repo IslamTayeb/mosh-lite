@@ -72,14 +72,24 @@ cleanup() {
 
 trap cleanup SIGINT SIGTERM EXIT
 
-# Detect interface in container if eth0 doesn't exist
-detect_interface() {
+# Detect all interfaces in container
+detect_all_interfaces() {
     local container=$1
-    local iface=$(docker exec "$container" bash -c "ip -o -4 addr show | grep -v '127.0.0.1' | head -n1 | awk '{print \$2}'")
-    if [ -z "$iface" ]; then
-        iface="eth0"
-    fi
-    echo "$iface"
+    docker exec "$container" bash -c "ip -o -4 addr show | grep -v '127.0.0.1' | awk '{print \$2}' | sort -u"
+}
+
+# Map interface name to network name based on subnet
+get_network_for_interface() {
+    local container=$1
+    local iface=$2
+    local ip=$(docker exec "$container" ip -4 addr show "$iface" | awk '/inet / {print $2}' | cut -d'/' -f1 | head -1)
+
+    case "$ip" in
+        10.1.*) echo "wifi" ;;
+        10.2.*) echo "cellular_1" ;;
+        10.3.*) echo "cellular_2" ;;
+        *) echo "unknown" ;;
+    esac
 }
 
 # Apply tc rule to a container
@@ -147,6 +157,37 @@ apply_tc_rule() {
     fi
 }
 
+# Apply roaming rules - make one interface active, others dead
+apply_roaming_rules() {
+    local container=$1
+    local active_network=$2
+    local delay_ms=$3
+    local jitter_ms=$4
+    local loss_pct=$5
+    local rate_kbit=$6
+
+    log_message "Roaming: $container using $active_network as active interface"
+
+    # Get all interfaces
+    local interfaces=$(detect_all_interfaces "$container")
+
+    for iface in $interfaces; do
+        local network=$(get_network_for_interface "$container" "$iface")
+        log_message "  Interface $iface -> network $network"
+
+        if [ "$network" = "$active_network" ]; then
+            # Active interface - apply specified rules
+            log_message "  $iface (ACTIVE): applying normal rules"
+            apply_tc_rule "$container" "$delay_ms" "$jitter_ms" "$loss_pct" "$rate_kbit" "$iface"
+        else
+            # Inactive interface - make it dead (100% loss)
+            log_message "  $iface (INACTIVE): applying 100% loss"
+            docker exec "$container" tc qdisc del dev "$iface" root 2>/dev/null || true
+            docker exec "$container" tc qdisc add dev "$iface" root netem loss 100% 2>&1 | tee -a "$CONTROLLER_LOG"
+        fi
+    done
+}
+
 # Main execution
 log_message "=== Netem Controller Starting ==="
 log_message "Scenario: $SCENARIO_FILE"
@@ -168,13 +209,20 @@ for ((i=0; i<num_steps; i++)); do
     jitter=$(echo "$step" | jq -r '.jitter_ms // 0')
     loss=$(echo "$step" | jq -r '.loss_pct // 0')
     rate=$(echo "$step" | jq -r '.rate_kbit // 0')
+    active_network=$(echo "$step" | jq -r '.active_interface // ""')
 
     log_message ""
     log_message "--- Step $((i+1))/$num_steps (duration: ${duration}s) ---"
 
     # Apply to all targets
     for target in "${TARGET_ARRAY[@]}"; do
-        apply_tc_rule "$target" "$delay" "$jitter" "$loss" "$rate" "$INTERFACE"
+        if [ -n "$active_network" ]; then
+            # Roaming mode: apply rules based on active network
+            apply_roaming_rules "$target" "$active_network" "$delay" "$jitter" "$loss" "$rate"
+        else
+            # Normal mode: apply to specified interface
+            apply_tc_rule "$target" "$delay" "$jitter" "$loss" "$rate" "$INTERFACE"
+        fi
     done
 
     log_message "Waiting ${duration}s before next step..."

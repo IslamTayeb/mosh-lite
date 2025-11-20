@@ -1,0 +1,127 @@
+{
+  "test_timestamp": "2025-11-20T01:26:33.808716Z",
+  "server": "server:1337",
+  "scenario": {
+    "scenario_name": "Variable Link Quality",
+    "description": "Simulates changing network conditions: good -> bad -> good",
+    "created_by": "netem_testbed",
+    "seed": 42,
+    "notes": "10s good link, 10s degraded link with high latency and loss, 10s recovery",
+    "steps": [
+      {
+        "duration_s": 10,
+        "delay_ms": 20,
+        "jitter_ms": 5,
+        "loss_pct": 0,
+        "rate_kbit": 10000,
+        "description": "Good link: low latency, no loss, 10Mbps"
+      },
+      {
+        "duration_s": 10,
+        "delay_ms": 200,
+        "jitter_ms": 50,
+        "loss_pct": 5,
+        "rate_kbit": 1000,
+        "description": "Bad link: high latency, 5% loss, 1Mbps"
+      },
+      {
+        "duration_s": 10,
+        "delay_ms": 50,
+        "jitter_ms": 10,
+        "loss_pct": 1,
+        "rate_kbit": 5000,
+        "description": "Recovery: medium latency, low loss, 5Mbps"
+      }
+    ]
+  },
+  "test_config": {
+    "send_rate_s": 0.01,
+    "packets_per_second": 100,
+    "socket_timeout_s": 2.0,
+    "response_wait_time_s": 3.0
+  },
+  "phases": [
+    {
+      "phase": 1,
+      "config": {
+        "duration_s": 10,
+        "delay_ms": 20,
+        "jitter_ms": 5,
+        "loss_pct": 0,
+        "rate_kbit": 10000,
+        "description": "Good link: low latency, no loss, 10Mbps"
+      },
+      "packets_sent": 931,
+      "packets_received": 925,
+      "packets_lost": 6,
+      "loss_percent": 0.64,
+      "phase_duration_s": 10.0,
+      "send_duration_s": 10.0,
+      "latency_ms": {
+        "min": 0.16,
+        "max": 60.453,
+        "mean": 26.2,
+        "median": 34.815,
+        "stdev": 19.962,
+        "jitter": 5.281
+      }
+    },
+    {
+      "phase": 2,
+      "config": {
+        "duration_s": 10,
+        "delay_ms": 200,
+        "jitter_ms": 50,
+        "loss_pct": 5,
+        "rate_kbit": 1000,
+        "description": "Bad link: high latency, 5% loss, 1Mbps"
+      },
+      "packets_sent": 931,
+      "packets_received": 841,
+      "packets_lost": 90,
+      "loss_percent": 9.67,
+      "phase_duration_s": 10.0,
+      "send_duration_s": 10.0,
+      "latency_ms": {
+        "min": 11.449,
+        "max": 612.574,
+        "mean": 226.977,
+        "median": 257.318,
+        "stdev": 184.457,
+        "jitter": 44.507
+      }
+    },
+    {
+      "phase": 3,
+      "config": {
+        "duration_s": 10,
+        "delay_ms": 50,
+        "jitter_ms": 10,
+        "loss_pct": 1,
+        "rate_kbit": 5000,
+        "description": "Recovery: medium latency, low loss, 5Mbps"
+      },
+      "packets_sent": 933,
+      "packets_received": 831,
+      "packets_lost": 102,
+      "loss_percent": 10.93,
+      "phase_duration_s": 10.0,
+      "send_duration_s": 10.0,
+      "latency_ms": {
+        "min": 35.405,
+        "max": 607.547,
+        "mean": 228.406,
+        "median": 120.382,
+        "stdev": 154.652,
+        "jitter": 40.126
+      }
+    }
+  ],
+  "overall": {
+    "total_packets_sent": 2795,
+    "total_packets_received": 2597,
+    "total_packets_lost": 198,
+    "overall_loss_percent": 7.08,
+    "mean_latency_ms": 160.528
+  }
+}

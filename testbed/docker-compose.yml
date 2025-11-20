@@ -10,7 +10,9 @@ services:
     cap_add:
       - NET_ADMIN
     networks:
-      - netem-net
+      - wifi
+      - cellular_1
+      - cellular_2
     environment:
       - ROLE=server
       - NODE_NAME=server
@@ -31,7 +33,9 @@ services:
     cap_add:
       - NET_ADMIN
     networks:
-      - netem-net
+      - wifi
+      - cellular_1
+      - cellular_2
     environment:
       - ROLE=client
       - NODE_NAME=client
@@ -47,6 +51,21 @@ services:
       - server
 
 networks:
-  netem-net:
+  wifi:
     driver: bridge
-    name: netem-net
+    name: wifi
+    ipam:
+      config:
+        - subnet: 10.1.0.0/24
+  cellular_1:
+    driver: bridge
+    name: cellular_1
+    ipam:
+      config:
+        - subnet: 10.2.0.0/24
+  cellular_2:
+    driver: bridge
+    name: cellular_2
+    ipam:
+      config:
+        - subnet: 10.3.0.0/24
