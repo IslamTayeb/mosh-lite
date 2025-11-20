@@ -1,7 +1,7 @@
 {
-  "packets_received": 0,
-  "packets_sent": 0,
-  "start_time": "2025-11-16T04:58:24.689161Z",
-  "end_time": "2025-11-16T04:58:50.277458Z",
+  "packets_received": 2665,
+  "packets_sent": 2665,
+  "start_time": "2025-11-20T03:28:23.293619Z",
+  "end_time": "2025-11-20T03:29:07.469776Z",
   "errors": 0
 }

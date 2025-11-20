@@ -7,12 +7,13 @@ import socket
 import json
 import time
 import sys
+import os
 import signal
 from datetime import datetime
 
 # Configuration
 UDP_IP = "0.0.0.0"  # Listen on all interfaces
-UDP_PORT = 5000
+UDP_PORT = int(os.getenv("UDP_PORT", "5000"))
 LOG_FILE = "/var/log/udp_server.log"
 STATS_FILE = "/artifacts/server_stats.json"
 
