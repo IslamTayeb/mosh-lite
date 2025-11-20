@@ -1,0 +1,144 @@
+{
+  "scenario_name": "Full Roaming Cycle",
+  "description": "Complete roaming scenario: WiFi degradation → Cellular tower 1 → Tower handoff → Cellular tower 2 → WiFi recovery",
+  "created_by": "netem_testbed",
+  "seed": 42,
+  "notes": "Comprehensive test of all roaming transitions with realistic network conditions",
+  "steps": [
+    {
+      "duration_s": 10,
+      "delay_ms": 15,
+      "jitter_ms": 3,
+      "loss_pct": 0,
+      "rate_kbit": 50000,
+      "active_interface": "wifi",
+      "description": "Start: Excellent WiFi connection"
+    },
+    {
+      "duration_s": 8,
+      "delay_ms": 40,
+      "jitter_ms": 12,
+      "loss_pct": 3,
+      "rate_kbit": 20000,
+      "active_interface": "wifi",
+      "description": "WiFi degrading: user moving away"
+    },
+    {
+      "duration_s": 7,
+      "delay_ms": 100,
+      "jitter_ms": 30,
+      "loss_pct": 15,
+      "rate_kbit": 5000,
+      "active_interface": "wifi",
+      "description": "WiFi poor: triggering handoff decision"
+    },
+    {
+      "duration_s": 3,
+      "delay_ms": 300,
+      "jitter_ms": 80,
+      "loss_pct": 50,
+      "rate_kbit": 1000,
+      "active_interface": "wifi",
+      "description": "WiFi critical: handoff imminent"
+    },
+    {
+      "duration_s": 8,
+      "delay_ms": 65,
+      "jitter_ms": 18,
+      "loss_pct": 1,
+      "rate_kbit": 8000,
+      "active_interface": "cellular_1",
+      "description": "Switched to Cellular tower 1: stable LTE"
+    },
+    {
+      "duration_s": 10,
+      "delay_ms": 55,
+      "jitter_ms": 15,
+      "loss_pct": 0,
+      "rate_kbit": 10000,
+      "active_interface": "cellular_1",
+      "description": "Cellular tower 1: strong signal"
+    },
+    {
+      "duration_s": 8,
+      "delay_ms": 90,
+      "jitter_ms": 25,
+      "loss_pct": 8,
+      "rate_kbit": 4000,
+      "active_interface": "cellular_1",
+      "description": "Cellular tower 1: signal weakening"
+    },
+    {
+      "duration_s": 4,
+      "delay_ms": 200,
+      "jitter_ms": 60,
+      "loss_pct": 30,
+      "rate_kbit": 1500,
+      "active_interface": "cellular_1",
+      "description": "Cellular tower 1: handoff to tower 2 starting"
+    },
+    {
+      "duration_s": 6,
+      "delay_ms": 180,
+      "jitter_ms": 55,
+      "loss_pct": 20,
+      "rate_kbit": 2000,
+      "active_interface": "cellular_2",
+      "description": "Cellular tower 2: acquiring, connection establishing"
+    },
+    {
+      "duration_s": 10,
+      "delay_ms": 70,
+      "jitter_ms": 18,
+      "loss_pct": 2,
+      "rate_kbit": 8000,
+      "active_interface": "cellular_2",
+      "description": "Cellular tower 2: connection stable"
+    },
+    {
+      "duration_s": 8,
+      "delay_ms": 85,
+      "jitter_ms": 22,
+      "loss_pct": 5,
+      "rate_kbit": 6000,
+      "active_interface": "cellular_2",
+      "description": "Cellular tower 2: maintaining, WiFi in range"
+    },
+    {
+      "duration_s": 6,
+      "delay_ms": 120,
+      "jitter_ms": 35,
+      "loss_pct": 12,
+      "rate_kbit": 3000,
+      "active_interface": "cellular_2",
+      "description": "Cellular tower 2: preparing switch back to WiFi"
+    },
+    {
+      "duration_s": 5,
+      "delay_ms": 60,
+      "jitter_ms": 20,
+      "loss_pct": 8,
+      "rate_kbit": 15000,
+      "active_interface": "wifi",
+      "description": "WiFi reconnecting: initial connection"
+    },
+    {
+      "duration_s": 8,
+      "delay_ms": 25,
+      "jitter_ms": 8,
+      "loss_pct": 1,
+      "rate_kbit": 30000,
+      "active_interface": "wifi",
+      "description": "WiFi improving: getting closer to AP"
+    },
+    {
+      "duration_s": 10,
+      "delay_ms": 15,
+      "jitter_ms": 3,
+      "loss_pct": 0,
+      "rate_kbit": 50000,
+      "active_interface": "wifi",
+      "description": "End: Back to excellent WiFi"
+    }
+  ]
+}

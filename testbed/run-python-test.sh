@@ -5,7 +5,7 @@
 
 set -e
 
-SCENARIO=${SCENARIO:-scenarios/variable_link.json}
+SCENARIO=${SCENARIO:-scenarios/roaming.json}
 CLEANUP=${CLEANUP:-true}
 
 echo "Network Testing Testbed"

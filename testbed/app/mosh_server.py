@@ -23,37 +23,43 @@ stats = {
     "packets_sent": 0,
     "start_time": None,
     "end_time": None,
-    "errors": 0
+    "errors": 0,
 }
+
 
 def log(message):
     """Log message with timestamp"""
     timestamp = datetime.utcnow().isoformat() + "Z"
     log_line = f"[{timestamp}] {message}\n"
-    print(log_line, end='')
+    print(log_line, end="")
     sys.stdout.flush()
     try:
-        with open(LOG_FILE, 'a') as f:
+        with open(LOG_FILE, "a") as f:
             f.write(log_line)
     except Exception as e:
         print(f"Error writing to log: {e}", file=sys.stderr)
+
 
 def save_stats():
     """Save statistics to file"""
     stats["end_time"] = datetime.utcnow().isoformat() + "Z"
     try:
-        with open(STATS_FILE, 'w') as f:
+        with open(STATS_FILE, "w") as f:
             json.dump(stats, f, indent=2)
         log(f"Statistics saved to {STATS_FILE}")
     except Exception as e:
         log(f"Error saving statistics: {e}")
 
+
 def signal_handler(sig, frame):
     """Handle shutdown signal"""
     log("Received shutdown signal")
     save_stats()
-    log(f"Server statistics - Received: {stats['packets_received']}, Sent: {stats['packets_sent']}, Errors: {stats['errors']}")
+    log(
+        f"Server statistics - Received: {stats['packets_received']}, Sent: {stats['packets_sent']}, Errors: {stats['errors']}"
+    )
     sys.exit(0)
+
 
 def main():
     # Register signal handlers
@@ -76,9 +82,9 @@ def main():
 
             try:
                 # Decode packet
-                packet = json.loads(data.decode('utf-8'))
-                seq = packet.get('seq', -1)
-                client_send_time = packet.get('timestamp', 0)
+                packet = json.loads(data.decode("utf-8"))
+                seq = packet.get("seq", -1)
+                client_send_time = packet.get("timestamp", 0)
 
                 stats["packets_received"] += 1
 
@@ -91,11 +97,11 @@ def main():
                     "seq": seq,
                     "client_send_time": client_send_time,
                     "server_recv_time": recv_time,
-                    "server_send_time": time.time()
+                    "server_send_time": time.time(),
                 }
 
                 # Send response back to client
-                response_data = json.dumps(response).encode('utf-8')
+                response_data = json.dumps(response).encode("utf-8")
                 sock.sendto(response_data, client_addr)
                 stats["packets_sent"] += 1
 
@@ -110,6 +116,7 @@ def main():
             log(f"Socket error: {e}")
             stats["errors"] += 1
             time.sleep(0.1)  # Brief pause on error
+
 
 if __name__ == "__main__":
     main()

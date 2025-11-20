@@ -1,0 +1,63 @@
+{
+  "scenario_name": "WiFi Degradation to Cellular",
+  "description": "WiFi gradually degrades, then switches to cellular with brief disconnect",
+  "created_by": "netem_testbed",
+  "seed": 42,
+  "notes": "Simulates WiFi getting worse before switching to cellular network",
+  "steps": [
+    {
+      "duration_s": 10,
+      "delay_ms": 20,
+      "jitter_ms": 5,
+      "loss_pct": 0,
+      "rate_kbit": 50000,
+      "active_interface": "wifi",
+      "description": "Good WiFi: low latency, high bandwidth"
+    },
+    {
+      "duration_s": 10,
+      "delay_ms": 50,
+      "jitter_ms": 15,
+      "loss_pct": 5,
+      "rate_kbit": 10000,
+      "active_interface": "wifi",
+      "description": "WiFi degrading: increased latency and packet loss"
+    },
+    {
+      "duration_s": 10,
+      "delay_ms": 150,
+      "jitter_ms": 50,
+      "loss_pct": 20,
+      "rate_kbit": 2000,
+      "active_interface": "wifi",
+      "description": "WiFi very poor: high latency, 20% loss"
+    },
+    {
+      "duration_s": 5,
+      "delay_ms": 500,
+      "jitter_ms": 100,
+      "loss_pct": 90,
+      "rate_kbit": 100,
+      "active_interface": "wifi",
+      "description": "WiFi dying: extremely poor, triggering handoff"
+    },
+    {
+      "duration_s": 10,
+      "delay_ms": 60,
+      "jitter_ms": 15,
+      "loss_pct": 1,
+      "rate_kbit": 5000,
+      "active_interface": "cellular_1",
+      "description": "Switched to Cellular 1: stable connection"
+    },
+    {
+      "duration_s": 10,
+      "delay_ms": 55,
+      "jitter_ms": 12,
+      "loss_pct": 0,
+      "rate_kbit": 8000,
+      "active_interface": "cellular_1",
+      "description": "Cellular 1: good connection maintained"
+    }
+  ]
+}

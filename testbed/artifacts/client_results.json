@@ -1,36 +1,75 @@
 {
-  "test_timestamp": "2025-11-20T01:41:38.831730Z",
+  "test_timestamp": "2025-11-20T03:14:52.966250Z",
   "server": "server:1337",
   "scenario": {
-    "scenario_name": "Variable Link Quality",
-    "description": "Simulates changing network conditions: good -> bad -> good",
+    "scenario_name": "Cellular Tower Handoff",
+    "description": "Moving between cellular towers with brief disconnection",
     "created_by": "netem_testbed",
     "seed": 42,
-    "notes": "10s good link, 10s degraded link with high latency and loss, 10s recovery",
+    "notes": "Simulates cellular_1 degrading, disconnect during handoff, then cellular_2",
     "steps": [
       {
-        "duration_s": 10,
-        "delay_ms": 20,
-        "jitter_ms": 5,
-        "loss_pct": 0,
-        "rate_kbit": 10000,
-        "description": "Good link: low latency, no loss, 10Mbps"
-      },
-      {
-        "duration_s": 10,
-        "delay_ms": 200,
-        "jitter_ms": 50,
-        "loss_pct": 5,
-        "rate_kbit": 1000,
-        "description": "Bad link: high latency, 5% loss, 1Mbps"
-      },
-      {
-        "duration_s": 10,
+        "duration_s": 5,
         "delay_ms": 50,
         "jitter_ms": 10,
-        "loss_pct": 1,
+        "loss_pct": 0,
+        "rate_kbit": 10000,
+        "active_interface": "cellular_1",
+        "description": "Cellular 1: strong signal, good connection"
+      },
+      {
+        "duration_s": 5,
+        "delay_ms": 80,
+        "jitter_ms": 25,
+        "loss_pct": 5,
         "rate_kbit": 5000,
-        "description": "Recovery: medium latency, low loss, 5Mbps"
+        "active_interface": "cellular_1",
+        "description": "Cellular 1: signal degrading, moving away from tower"
+      },
+      {
+        "duration_s": 5,
+        "delay_ms": 150,
+        "jitter_ms": 50,
+        "loss_pct": 15,
+        "rate_kbit": 2000,
+        "active_interface": "cellular_1",
+        "description": "Cellular 1: poor signal, high loss"
+      },
+      {
+        "duration_s": 3,
+        "delay_ms": 1000,
+        "jitter_ms": 200,
+        "loss_pct": 80,
+        "rate_kbit": 500,
+        "active_interface": "cellular_1",
+        "description": "Cellular 1: connection dying, initiating handoff"
+      },
+      {
+        "duration_s": 5,
+        "delay_ms": 200,
+        "jitter_ms": 60,
+        "loss_pct": 30,
+        "rate_kbit": 1000,
+        "active_interface": "cellular_2",
+        "description": "Cellular 2: acquiring signal, establishing connection"
+      },
+      {
+        "duration_s": 5,
+        "delay_ms": 70,
+        "jitter_ms": 15,
+        "loss_pct": 2,
+        "rate_kbit": 8000,
+        "active_interface": "cellular_2",
+        "description": "Cellular 2: connection stabilized, good signal"
+      },
+      {
+        "duration_s": 5,
+        "delay_ms": 55,
+        "jitter_ms": 12,
+        "loss_pct": 0,
+        "rate_kbit": 12000,
+        "active_interface": "cellular_2",
+        "description": "Cellular 2: strong signal, optimal performance"
       }
     ]
   },
@@ -44,84 +83,170 @@
     {
       "phase": 1,
       "config": {
-        "duration_s": 10,
-        "delay_ms": 20,
-        "jitter_ms": 5,
+        "duration_s": 5,
+        "delay_ms": 50,
+        "jitter_ms": 10,
         "loss_pct": 0,
         "rate_kbit": 10000,
-        "description": "Good link: low latency, no loss, 10Mbps"
+        "active_interface": "cellular_1",
+        "description": "Cellular 1: strong signal, good connection"
       },
-      "packets_sent": 909,
-      "packets_received": 906,
-      "packets_lost": 3,
-      "loss_percent": 0.33,
-      "phase_duration_s": 10.0,
-      "send_duration_s": 10.0,
+      "packets_sent": 432,
+      "packets_received": 426,
+      "packets_lost": 6,
+      "loss_percent": 1.39,
+      "phase_duration_s": 5.01,
+      "send_duration_s": 5.01,
       "latency_ms": {
-        "min": 0.168,
-        "max": 184.904,
-        "mean": 26.274,
-        "median": 34.315,
-        "stdev": 21.004,
-        "jitter": 5.532
+        "min": 0.066,
+        "max": 68.673,
+        "mean": 13.449,
+        "median": 1.124,
+        "stdev": 21.643,
+        "jitter": 3.03
       }
     },
     {
       "phase": 2,
       "config": {
-        "duration_s": 10,
-        "delay_ms": 200,
-        "jitter_ms": 50,
+        "duration_s": 5,
+        "delay_ms": 80,
+        "jitter_ms": 25,
         "loss_pct": 5,
-        "rate_kbit": 1000,
-        "description": "Bad link: high latency, 5% loss, 1Mbps"
+        "rate_kbit": 5000,
+        "active_interface": "cellular_1",
+        "description": "Cellular 1: signal degrading, moving away from tower"
       },
-      "packets_sent": 914,
-      "packets_received": 833,
-      "packets_lost": 81,
-      "loss_percent": 8.86,
-      "phase_duration_s": 10.0,
-      "send_duration_s": 10.0,
+      "packets_sent": 443,
+      "packets_received": 437,
+      "packets_lost": 6,
+      "loss_percent": 1.35,
+      "phase_duration_s": 5.0,
+      "send_duration_s": 5.0,
       "latency_ms": {
-        "min": 13.324,
-        "max": 561.652,
-        "mean": 216.86,
-        "median": 213.772,
-        "stdev": 178.478,
-        "jitter": 42.981
+        "min": 61.675,
+        "max": 140.301,
+        "mean": 102.999,
+        "median": 102.558,
+        "stdev": 12.958,
+        "jitter": 14.715
       }
     },
     {
       "phase": 3,
       "config": {
-        "duration_s": 10,
-        "delay_ms": 50,
-        "jitter_ms": 10,
-        "loss_pct": 1,
-        "rate_kbit": 5000,
-        "description": "Recovery: medium latency, low loss, 5Mbps"
+        "duration_s": 5,
+        "delay_ms": 150,
+        "jitter_ms": 50,
+        "loss_pct": 15,
+        "rate_kbit": 2000,
+        "active_interface": "cellular_1",
+        "description": "Cellular 1: poor signal, high loss"
       },
-      "packets_sent": 927,
-      "packets_received": 816,
-      "packets_lost": 111,
-      "loss_percent": 11.97,
-      "phase_duration_s": 10.01,
-      "send_duration_s": 10.01,
+      "packets_sent": 458,
+      "packets_received": 409,
+      "packets_lost": 49,
+      "loss_percent": 10.7,
+      "phase_duration_s": 5.0,
+      "send_duration_s": 5.0,
       "latency_ms": {
-        "min": 29.344,
-        "max": 625.606,
-        "mean": 242.008,
-        "median": 130.317,
-        "stdev": 158.001,
-        "jitter": 51.326
+        "min": 27.466,
+        "max": 242.0,
+        "mean": 132.886,
+        "median": 132.644,
+        "stdev": 43.879,
+        "jitter": 30.207
       }
+    },
+    {
+      "phase": 4,
+      "config": {
+        "duration_s": 3,
+        "delay_ms": 1000,
+        "jitter_ms": 200,
+        "loss_pct": 80,
+        "rate_kbit": 500,
+        "active_interface": "cellular_1",
+        "description": "Cellular 1: connection dying, initiating handoff"
+      },
+      "packets_sent": 253,
+      "packets_received": 209,
+      "packets_lost": 44,
+      "loss_percent": 17.39,
+      "phase_duration_s": 3.01,
+      "send_duration_s": 3.01,
+      "latency_ms": {
+        "min": 84.861,
+        "max": 262.43,
+        "mean": 165.746,
+        "median": 166.318,
+        "stdev": 37.075,
+        "jitter": 41.363
+      }
+    },
+    {
+      "phase": 5,
+      "config": {
+        "duration_s": 5,
+        "delay_ms": 200,
+        "jitter_ms": 60,
+        "loss_pct": 30,
+        "rate_kbit": 1000,
+        "active_interface": "cellular_2",
+        "description": "Cellular 2: acquiring signal, establishing connection"
+      },
+      "packets_sent": 279,
+      "packets_received": 0,
+      "packets_lost": 279,
+      "loss_percent": 100.0,
+      "phase_duration_s": 5.05,
+      "send_duration_s": 5.05,
+      "latency_ms": null
+    },
+    {
+      "phase": 6,
+      "config": {
+        "duration_s": 5,
+        "delay_ms": 70,
+        "jitter_ms": 15,
+        "loss_pct": 2,
+        "rate_kbit": 8000,
+        "active_interface": "cellular_2",
+        "description": "Cellular 2: connection stabilized, good signal"
+      },
+      "packets_sent": 219,
+      "packets_received": 0,
+      "packets_lost": 219,
+      "loss_percent": 100.0,
+      "phase_duration_s": 5.01,
+      "send_duration_s": 5.01,
+      "latency_ms": null
+    },
+    {
+      "phase": 7,
+      "config": {
+        "duration_s": 5,
+        "delay_ms": 55,
+        "jitter_ms": 12,
+        "loss_pct": 0,
+        "rate_kbit": 12000,
+        "active_interface": "cellular_2",
+        "description": "Cellular 2: strong signal, optimal performance"
+      },
+      "packets_sent": 200,
+      "packets_received": 0,
+      "packets_lost": 200,
+      "loss_percent": 100.0,
+      "phase_duration_s": 5.03,
+      "send_duration_s": 5.03,
+      "latency_ms": null
     }
   ],
   "overall": {
-    "total_packets_sent": 2750,
-    "total_packets_received": 2555,
-    "total_packets_lost": 195,
-    "overall_loss_percent": 7.09,
-    "mean_latency_ms": 161.714
+    "total_packets_sent": 2284,
+    "total_packets_received": 1481,
+    "total_packets_lost": 803,
+    "overall_loss_percent": 35.16,
+    "mean_latency_ms": 103.77
   }
 }
