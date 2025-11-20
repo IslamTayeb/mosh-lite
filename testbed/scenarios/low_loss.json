@@ -1,0 +1,18 @@
+{
+  "scenario_name": "Low Packet Loss",
+  "description": "Low packet loss environment - 10% loss",
+  "created_by": "lambda_test",
+  "seed": 100,
+  "notes": "Testing lambda impact with low packet loss",
+  "steps": [
+    {
+      "duration_s": 30,
+      "delay_ms": 50,
+      "jitter_ms": 10,
+      "loss_pct": 10,
+      "rate_kbit": 5000,
+      "signal_strength_dbm": -60,
+      "description": "Low loss: 10%"
+    }
+  ]
+}

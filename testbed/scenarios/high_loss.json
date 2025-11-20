@@ -1,0 +1,18 @@
+{
+  "scenario_name": "High Packet Loss",
+  "description": "High packet loss environment - 50% loss",
+  "created_by": "lambda_test",
+  "seed": 100,
+  "notes": "Testing lambda impact with high packet loss",
+  "steps": [
+    {
+      "duration_s": 30,
+      "delay_ms": 50,
+      "jitter_ms": 10,
+      "loss_pct": 50,
+      "rate_kbit": 5000,
+      "signal_strength_dbm": -85,
+      "description": "High loss: 50%"
+    }
+  ]
+}

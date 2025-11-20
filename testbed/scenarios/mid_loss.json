@@ -1,0 +1,18 @@
+{
+  "scenario_name": "Mid Packet Loss",
+  "description": "Mid packet loss environment - 25% loss",
+  "created_by": "lambda_test",
+  "seed": 100,
+  "notes": "Testing lambda impact with mid packet loss",
+  "steps": [
+    {
+      "duration_s": 30,
+      "delay_ms": 50,
+      "jitter_ms": 10,
+      "loss_pct": 25,
+      "rate_kbit": 5000,
+      "signal_strength_dbm": -75,
+      "description": "Mid loss: 25%"
+    }
+  ]
+}

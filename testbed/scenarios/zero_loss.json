@@ -1,0 +1,18 @@
+{
+  "scenario_name": "Zero Packet Loss",
+  "description": "No packet loss environment - 0% loss",
+  "created_by": "lambda_test",
+  "seed": 100,
+  "notes": "Testing lambda impact with no packet loss",
+  "steps": [
+    {
+      "duration_s": 30,
+      "delay_ms": 50,
+      "jitter_ms": 10,
+      "loss_pct": 0,
+      "rate_kbit": 5000,
+      "signal_strength_dbm": -40,
+      "description": "Zero loss: 0%"
+    }
+  ]
+}
