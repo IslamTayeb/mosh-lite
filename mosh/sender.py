@@ -38,7 +38,7 @@ def on_send(new_state: State, inf: InflightTracker):
     known_receiver_state_num: int = inf.highest_ack
 
     if states[assumed_receiver_state_num].time_sent is not None and time.time() - states[assumed_receiver_state_num].time_sent < TIMEOUT_THRESHOLD:
-        old_num = random.choices([assumed_receiver_state_num, known_receiver_state_num], weights=[LAMBDA, 1 - LAMBDA], k = 1)[0]
+        old_num = random.choices([known_receiver_state_num, assumed_receiver_state_num], weights=[LAMBDA, 1 - LAMBDA], k = 1)[0]
     else:
         old_num = known_receiver_state_num
 
