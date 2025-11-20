@@ -15,6 +15,11 @@ LAMBDA = 0.3 # TODO: tune this later
              # defines probability that we pull last known receiver state instead of the assumed receiver state
 TIMEOUT_THRESHOLD = 1.0 # TODO: Estimate RTT using TCP's formula and improve this
 
+def send_message(message: str) -> None:
+    global states
+    new_state = State(message)
+    on_send(new_state, inflight)
+
 def on_receive(instruction: TransportInstruction):
     print("\nReceived packet from receiver:")
     print(f"  Their ACK: {instruction.ack_num}")
@@ -50,7 +55,8 @@ def on_send(new_state: State, inf: InflightTracker):
 
 def init(host, port):
     global transport
-    transport = Transporter('', 0, host, port, on_receive)
+    transport = Transporter('', 0, host, port)
+    print(f'Initialized transport {type(transport)}')
 
 def receive_acks():
     transport.socket.settimeout(0.1)

@@ -4,6 +4,7 @@ from datagram import Packet
 import socket
 import time
 from typing import Optional
+import asyncio
 
 states: dict[int, State] = {0: State("")}
 transport: Optional[Transporter] = None
@@ -33,8 +34,10 @@ def on_receive(instruction: TransportInstruction) -> None:
 
 def init(port):
     global transport
-    transport = Transporter('', port, None, None, on_receive)
+    transport = Transporter('', port, None, None)
 
-def receive_loop():
+async def update_listener():
+    loop = asyncio.get_running_loop()
     while True:
-        transport.recv()
+        update = await transport.async_recv(loop)
+        on_receive(update)

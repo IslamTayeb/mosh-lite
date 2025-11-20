@@ -7,15 +7,26 @@ from datagram import Packet
 import socket
 
 class Transporter:
-    def __init__(self, binding_host: str, binding_port: int, other_host: Optional[str], other_port: Optional[int], on_receive: Callable[['TransportInstruction'], None]):
+    def __init__(self, binding_host: str, binding_port: int, other_host: Optional[str], other_port: Optional[int]):
         self.socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.socket.bind((binding_host, binding_port))
+        self.socket.setblocking(False)
         self.seq = 0
         self.last_timestamp: Optional[float] = None
-        self.on_receive = on_receive
         self.other_addr: Optional[tuple] = (other_host, other_port) if (other_host is not None and other_port is not None) else None
         self.current_signal_strength = -50
         self.remote_signal_strength = -50
+
+    def fileno(self):
+        return self.socket.fileno()
+
+    async def async_recv(self, loop) -> 'TransportInstruction':
+        raw, addr = await loop.sock_recvfrom(self.socket, 1500)
+        self.other_addr = addr
+        packet = Packet.unpack(raw)
+        self.last_timestamp = packet.ts
+        self.remote_signal_strength = packet.signal_strength_dbm
+        return TransportInstruction.unmarshal(packet.payload.decode('utf-8'))
 
     def set_signal_strength(self, dbm: int):
         self.current_signal_strength = dbm
@@ -31,13 +42,6 @@ class Transporter:
         self.seq += 1
         self.socket.sendto(packet.pack(), self.other_addr)
 
-    def recv(self):
-        raw_response, addr = self.socket.recvfrom(1500)
-        self.other_addr = addr
-        packet = Packet.unpack(raw_response)
-        self.last_timestamp = packet.ts
-        self.remote_signal_strength = packet.signal_strength_dbm
-        self.on_receive(TransportInstruction.unmarshal(packet.payload.decode('utf-8')))
 
 @dataclass
 class TransportInstruction:

@@ -1,5 +1,9 @@
-from receiver import init, receive_loop
+import asyncio
+from receiver import update_listener, init
 
-init(53001)
-print("Receiver listening on port 53001...")
-receive_loop()
+async def main():
+    init(53001)
+    await update_listener()
+
+if __name__ == "__main__":
+    asyncio.run(main())
