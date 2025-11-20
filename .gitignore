@@ -1,1 +1,6 @@
+__pycache__/
+.DS_STORE
+.venv
+*.pdf
 venv
+*.swp

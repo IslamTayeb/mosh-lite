@@ -8,7 +8,7 @@ class InflightTracker:
         self.inflight_state_numbers: SortedList[int] = SortedList()
         self.dependencies: dict[int, Optional[int]] = {}
         self.inflight_dependencies: SortedList[int] = SortedList()
-        self.highest_ack = -1
+        self.highest_ack: int = 0 # we start synced at state 0, which is State("") 
         # TODO: discard old states and dependencies
         # not important for correctness, just efficiency
 
