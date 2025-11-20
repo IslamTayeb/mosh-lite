@@ -320,6 +320,14 @@ def main():
     # Give server a moment to stabilize
     time.sleep(2)
 
+    # Wait for tc rules to be applied by netem_controller.sh
+    # The orchestrator script sleeps 5s after starting containers,
+    # then starts netem_controller which takes ~3s to apply rules.
+    # We've already waited ~2-3s for server + 2s stabilization = ~5s total.
+    # Wait an additional 5s to ensure tc rules are fully applied before sending.
+    log("Waiting 5s for network conditions to be applied...")
+    time.sleep(5)
+
     # Shared data structures for all phases
     sent_packets = {}  # seq -> send_time
     received_packets = {}  # seq -> response_data

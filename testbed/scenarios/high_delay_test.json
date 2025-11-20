@@ -1,0 +1,14 @@
+{
+  "scenario_name": "High Delay Test",
+  "description": "Test with very high delay to verify tc is working",
+  "steps": [
+    {
+      "duration_s": 10,
+      "delay_ms": 500,
+      "jitter_ms": 10,
+      "loss_pct": 0,
+      "rate_kbit": 10000,
+      "description": "500ms delay - should see ~1000ms RTT"
+    }
+  ]
+}
