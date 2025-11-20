@@ -43,8 +43,6 @@ class Transporter:
         self.last_timestamp = packet.ts
         self.remote_signal_strength = packet.signal_strength_dbm
 
-        # this is technically non-sensical on the receiver end
-        # w/e fix later
         # RTO estimation copied from our TCP lab (lab 1)
         
         if (not self.is_receiver):
@@ -79,7 +77,6 @@ class Transporter:
         assert self.other_addr is not None, "Other address must be initialized to send"
         t: TransportInstruction = TransportInstruction(old_num, new_num, ack_num, throwaway_num, diff)
         payload: bytes = t.marshall().encode('utf-8')
-        # TODO CRITICAL: This will break after a minute
         curr_timestamp = self._time_to_int()
         old_timestamp = self.last_timestamp or self._time_to_int()
         direction = True
