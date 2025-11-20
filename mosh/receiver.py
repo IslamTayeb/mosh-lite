@@ -3,7 +3,7 @@ from transport import TransportInstruction, Transporter
 from datagram import Packet
 import socket
 import time
-from typing import Optional
+from typing import Optional, Any, Callable
 import asyncio
 import logging
 
@@ -41,9 +41,17 @@ def init(port):
     global transport
     transport = Transporter('', port, None, None)
 
-async def update_listener():
+def hook(f, ti: TransportInstruction) -> None:
+    ts = time.time()
+    state_num = ti.new_num
+
+    f.write(f'{ts}, {state_num}\n')
+     
+
+async def update_listener(receive_hook: Callable[[Any, TransportInstruction], None] = None, extra_context=None):
     loop = asyncio.get_running_loop()
     while True:
         update = await transport.async_recv(loop)
         on_receive(update)
-
+        if receive_hook is not None:
+            receive_hook(extra_context, update) 

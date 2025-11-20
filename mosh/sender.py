@@ -5,6 +5,7 @@ import socket
 import random
 import time
 import logging
+from typing import Optional, Callable, Any
 
 logging.basicConfig(
         level=logging.DEBUG,
@@ -21,10 +22,12 @@ next_state_num = 1
 LAMBDA = 0.3 # TODO: tune this later
              # defines probability that we pull last known receiver state instead of the assumed receiver state
 
-def send_message(message: str) -> None:
+def send_message(message: str, send_hook: Optional[Callable] = None, extra_context: Any = None) -> None:
     global states
     new_state = State(message)
     on_send(new_state, inflight)
+    if send_hook is not None:
+        send_hook(extra_context, next_state_num - 1)
 
 def on_receive(instruction: TransportInstruction):
     logging.debug("\nReceived packet from receiver:")

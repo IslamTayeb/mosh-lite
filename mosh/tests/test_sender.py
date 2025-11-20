@@ -69,6 +69,7 @@ async def event_processor(queue):
             for task in asyncio.all_tasks():
                 task.cancel()
             return
+
 async def main():
     queue = asyncio.Queue()
     sender.init('127.0.0.1', 53001) 
