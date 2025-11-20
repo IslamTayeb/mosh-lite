@@ -6,6 +6,12 @@ import random
 import time
 import logging
 
+logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        filename='sender.log'
+        )
+
 states = {} # for now we store all states
 states[0] = State("")
 inflight = InflightTracker()
@@ -14,7 +20,6 @@ next_state_num = 1
 
 LAMBDA = 0.3 # TODO: tune this later
              # defines probability that we pull last known receiver state instead of the assumed receiver state
-TIMEOUT_THRESHOLD = 1.0 # TODO: Estimate RTT using TCP's formula and improve this
 
 def send_message(message: str) -> None:
     global states
@@ -37,7 +42,7 @@ def on_send(new_state: State, inf: InflightTracker):
     assumed_receiver_state_num: int = next_state_num - 1
     known_receiver_state_num: int = inf.highest_ack
 
-    if states[assumed_receiver_state_num].time_sent is not None and time.time() - states[assumed_receiver_state_num].time_sent < TIMEOUT_THRESHOLD:
+    if states[assumed_receiver_state_num].time_sent is not None and transport.timeout_threshold is not None and time.time() - states[assumed_receiver_state_num].time_sent < transport.timeout_threshold:
         old_num = random.choices([known_receiver_state_num, assumed_receiver_state_num], weights=[LAMBDA, 1 - LAMBDA], k = 1)[0]
     else:
         old_num = known_receiver_state_num

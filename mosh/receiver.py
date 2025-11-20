@@ -8,7 +8,7 @@ import asyncio
 import logging
 
 logging.basicConfig(
-    level=logging.INFO,              # Set minimum log level
+    level=logging.DEBUG,              # Set minimum log level
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
 
