@@ -25,6 +25,7 @@ cleanup() {
 trap cleanup EXIT SIGINT SIGTERM
 
 # Build and start
+rm ./artifacts/netem_ready.json
 echo -e "\n[1/4] Building containers..."
 docker compose build --quiet
 
@@ -59,6 +60,7 @@ for ((i=1; i<=TOTAL_DURATION; i++)); do
     ! kill -0 $CONTROLLER_PID 2>/dev/null && break
 done
 
+rm ./artifacts/netem_ready.json
 sleep 5  # Allow client to write results
 
 # Display results

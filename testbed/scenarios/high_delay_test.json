@@ -7,9 +7,9 @@
   "steps": [
     {
       "duration_s": 10,
-      "delay_ms": 500,
+      "delay_ms": 1000,
       "jitter_ms": 5,
-      "loss_pct": 0,
+      "loss_pct": 50,
       "rate_kbit": 10000,
       "description": "Good link: low latency, no loss, 10Mbps"
     }

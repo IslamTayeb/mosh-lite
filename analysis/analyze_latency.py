@@ -13,12 +13,12 @@ def backfill(
     client_log: dict[int, float],
     server_log: dict[int, float],
 ) -> None:
-    latest_time = server_log[max(server_log.keys())]
-    for key, value in sorted(latency.items(), key=lambda x: -x[0]):
-        if value is None and latest_time is not None:
-            latency[key] = latest_time - client_log[key]
-        else:
+    latest_time = None
+    for key in sorted(latency.keys(), reverse=True):
+        if key in server_log and server_log[key] is not None:
             latest_time = server_log[key]
+        if latency[key] is None and latest_time is not None:
+            latency[key] = latest_time - client_log[key]
 
 
 def calculate_latency(client_log: dict, server_log: dict) -> dict[int, float]:
@@ -39,12 +39,10 @@ def calculate_statistics(latency: dict[int, float]) -> dict[str, float]:
     if not values:
         return {"min": 0, "max": 0, "average": 0}
 
-    minimum = min(values)
-    maximum = max(values)
     average = sum(values) / len(values)
     median = sorted(values)[len(values) // 2]
 
-    return {"min": minimum, "max": maximum, "average": average, "median": median}
+    return {"average": average, "median": median}
 
 
 def main():
