@@ -9,7 +9,7 @@
       "duration_s": 10,
       "delay_ms": 1000,
       "jitter_ms": 5,
-      "loss_pct": 50,
+      "loss_pct": 75,
       "rate_kbit": 10000,
       "description": "Good link: low latency, no loss, 10Mbps"
     }

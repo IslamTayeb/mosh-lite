@@ -25,7 +25,6 @@ cleanup() {
 trap cleanup EXIT SIGINT SIGTERM
 
 # Build and start
-rm ./artifacts/netem_ready.json
 echo -e "\n[1/4] Building containers..."
 docker compose build --quiet
 
