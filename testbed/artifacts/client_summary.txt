@@ -1,0 +1,86 @@
+================================================================================
+UDP CLIENT TEST RESULTS
+================================================================================
+
+Test Time: 2025-11-20T03:41:27.858717Z
+Server: server:1337
+Scenario: Variable Link Quality
+
+OVERALL RESULTS
+--------------------------------------------------------------------------------
+Total Packets Sent:     2779
+Total Packets Received: 2594
+Total Packets Lost:     185
+Overall Loss:           6.66%
+Mean Latency:           162.278ms
+
+PER-PHASE RESULTS
+================================================================================
+
+Phase 1: Good link: low latency, no loss, 10Mbps
+--------------------------------------------------------------------------------
+Network Conditions:
+  Delay:     20ms
+  Jitter:    5ms
+  Loss:      0%
+  Bandwidth: 10000kbit
+  Duration:  10s
+
+Results:
+  Packets Sent:     928
+  Packets Received: 926
+  Packets Lost:     2 (0.22%)
+
+  Latency Statistics:
+    Min:    0.163ms
+    Max:    65.212ms
+    Mean:   26.127ms
+    Median: 34.531ms
+    StdDev: 20.086ms
+    Jitter: 5.219ms
+
+Phase 2: Bad link: high latency, 5% loss, 1Mbps
+--------------------------------------------------------------------------------
+Network Conditions:
+  Delay:     200ms
+  Jitter:    50ms
+  Loss:      5%
+  Bandwidth: 1000kbit
+  Duration:  10s
+
+Results:
+  Packets Sent:     929
+  Packets Received: 843
+  Packets Lost:     86 (9.26%)
+
+  Latency Statistics:
+    Min:    9.629ms
+    Max:    589.562ms
+    Mean:   221.626ms
+    Median: 217.975ms
+    StdDev: 182.442ms
+    Jitter: 44.805ms
+
+Phase 3: Recovery: medium latency, low loss, 5Mbps
+--------------------------------------------------------------------------------
+Network Conditions:
+  Delay:     50ms
+  Jitter:    10ms
+  Loss:      1%
+  Bandwidth: 5000kbit
+  Duration:  10s
+
+Results:
+  Packets Sent:     922
+  Packets Received: 825
+  Packets Lost:     97 (10.52%)
+
+  Latency Statistics:
+    Min:    31.349ms
+    Max:    610.178ms
+    Mean:   239.080ms
+    Median: 128.162ms
+    StdDev: 155.865ms
+    Jitter: 43.721ms
+
+================================================================================

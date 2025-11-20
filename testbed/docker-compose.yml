@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  server:
+    build: .
+    container_name: server
+    hostname: server
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - netem-net
+    environment:
+      - ROLE=server
+      - NODE_NAME=server
+      - PEER_NAME=client
+      - UDP_PORT=1337
+    volumes:
+      - ./artifacts:/artifacts
+      - ./scenarios:/scenarios:ro
+    stdin_open: true
+    tty: true
+
+  client:
+    build: .
+    container_name: client
+    hostname: client
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - netem-net
+    environment:
+      - ROLE=client
+      - NODE_NAME=client
+      - PEER_NAME=server
+      - UDP_PORT=1337
+      - SCENARIO_FILE=${SCENARIO_FILE:-/scenarios/variable_link.json}
+    volumes:
+      - ./artifacts:/artifacts
+      - ./scenarios:/scenarios:ro
+    stdin_open: true
+    tty: true
+    depends_on:
+      - server
+
+networks:
+  netem-net:
+    driver: bridge
+    name: netem-net
