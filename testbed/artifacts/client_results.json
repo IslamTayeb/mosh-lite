@@ -1,5 +1,5 @@
 {
-  "test_timestamp": "2025-11-20T01:26:33.808716Z",
+  "test_timestamp": "2025-11-20T01:41:38.831730Z",
   "server": "server:1337",
   "scenario": {
     "scenario_name": "Variable Link Quality",
@@ -51,19 +51,19 @@
         "rate_kbit": 10000,
         "description": "Good link: low latency, no loss, 10Mbps"
       },
-      "packets_sent": 931,
-      "packets_received": 925,
-      "packets_lost": 6,
-      "loss_percent": 0.64,
+      "packets_sent": 909,
+      "packets_received": 906,
+      "packets_lost": 3,
+      "loss_percent": 0.33,
       "phase_duration_s": 10.0,
       "send_duration_s": 10.0,
       "latency_ms": {
-        "min": 0.16,
-        "max": 60.453,
-        "mean": 26.2,
-        "median": 34.815,
-        "stdev": 19.962,
-        "jitter": 5.281
+        "min": 0.168,
+        "max": 184.904,
+        "mean": 26.274,
+        "median": 34.315,
+        "stdev": 21.004,
+        "jitter": 5.532
       }
     },
     {
@@ -76,19 +76,19 @@
         "rate_kbit": 1000,
         "description": "Bad link: high latency, 5% loss, 1Mbps"
       },
-      "packets_sent": 931,
-      "packets_received": 841,
-      "packets_lost": 90,
-      "loss_percent": 9.67,
+      "packets_sent": 914,
+      "packets_received": 833,
+      "packets_lost": 81,
+      "loss_percent": 8.86,
       "phase_duration_s": 10.0,
       "send_duration_s": 10.0,
       "latency_ms": {
-        "min": 11.449,
-        "max": 612.574,
-        "mean": 226.977,
-        "median": 257.318,
-        "stdev": 184.457,
-        "jitter": 44.507
+        "min": 13.324,
+        "max": 561.652,
+        "mean": 216.86,
+        "median": 213.772,
+        "stdev": 178.478,
+        "jitter": 42.981
       }
     },
     {
@@ -101,27 +101,27 @@
         "rate_kbit": 5000,
         "description": "Recovery: medium latency, low loss, 5Mbps"
       },
-      "packets_sent": 933,
-      "packets_received": 831,
-      "packets_lost": 102,
-      "loss_percent": 10.93,
-      "phase_duration_s": 10.0,
-      "send_duration_s": 10.0,
+      "packets_sent": 927,
+      "packets_received": 816,
+      "packets_lost": 111,
+      "loss_percent": 11.97,
+      "phase_duration_s": 10.01,
+      "send_duration_s": 10.01,
       "latency_ms": {
-        "min": 35.405,
-        "max": 607.547,
-        "mean": 228.406,
-        "median": 120.382,
-        "stdev": 154.652,
-        "jitter": 40.126
+        "min": 29.344,
+        "max": 625.606,
+        "mean": 242.008,
+        "median": 130.317,
+        "stdev": 158.001,
+        "jitter": 51.326
       }
     }
   ],
   "overall": {
-    "total_packets_sent": 2795,
-    "total_packets_received": 2597,
-    "total_packets_lost": 198,
-    "overall_loss_percent": 7.08,
-    "mean_latency_ms": 160.528
+    "total_packets_sent": 2750,
+    "total_packets_received": 2555,
+    "total_packets_lost": 195,
+    "overall_loss_percent": 7.09,
+    "mean_latency_ms": 161.714
   }
 }
