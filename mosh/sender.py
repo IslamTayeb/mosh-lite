@@ -53,6 +53,7 @@ def on_send(new_state: State, inf: InflightTracker):
     if (
         states[assumed_receiver_state_num].time_sent is not None
         and transport.timeout_threshold is not None
+        and len(inf.inflight_state_numbers) <= 32
         and time.time() - states[assumed_receiver_state_num].time_sent
         < transport.timeout_threshold
     ):
