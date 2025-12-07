@@ -64,7 +64,6 @@ def on_send(new_state: State, inf: InflightTracker):
     else:
         old_num = known_receiver_state_num
 
-    old_num = inf.highest_ack
     diff = states[old_num].generate_patch(new_state)
     new_num = next_state_num
     next_state_num += 1
