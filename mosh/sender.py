@@ -5,6 +5,7 @@ import socket
 import random
 import time
 import logging
+import os
 from typing import Optional, Callable, Any
 
 logging.basicConfig(
@@ -19,7 +20,7 @@ inflight = InflightTracker()
 transport = None
 next_state_num = 1
 
-LAMBDA = 0  # TODO: tune this later
+LAMBDA = float(os.environ.get("MOSH_LAMBDA", 0))
 # defines probability that we pull last known receiver state instead of the assumed receiver state
 
 

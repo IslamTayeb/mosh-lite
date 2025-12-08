@@ -6,7 +6,7 @@
   "notes": "10s good link, 10s degraded link with high latency and loss, 10s recovery",
   "steps": [
     {
-      "duration_s": 10,
+      "duration_s": 30,
       "delay_ms": 1000,
       "jitter_ms": 5,
       "loss_pct": 75,

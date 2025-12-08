@@ -166,3 +166,891 @@
 [2025-11-20T07:27:14Z] === Scenario Complete ===
 [2025-11-20T07:27:14Z] All steps executed successfully
 [2025-11-20T07:27:14Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T22:36:38Z] === Netem Controller Starting ===
+[2025-12-07T22:36:38Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T22:36:38Z] Targets: server client
+[2025-12-07T22:36:38Z] Interface: eth0
+[2025-12-07T22:36:38Z] Scenario has 1 steps
+[2025-12-07T22:36:38Z] 
+[2025-12-07T22:36:38Z] --- Step 1/1 (duration: 10s) ---
+[2025-12-07T22:36:38Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T22:36:38Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T22:36:38Z]   ✓ TBF applied
+[2025-12-07T22:36:38Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T22:36:38Z]   ✓ Netem applied
+[2025-12-07T22:36:38Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T22:36:38Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T22:36:38Z]   ✓ TBF applied
+[2025-12-07T22:36:38Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T22:36:39Z]   ✓ Netem applied
+[2025-12-07T22:36:39Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T22:36:41Z] Sentinel file updated: step 1/1
+[2025-12-07T22:36:41Z] Waiting 8s before next step...
+[2025-12-07T22:36:49Z] 
+[2025-12-07T22:36:49Z] === Scenario Complete ===
+[2025-12-07T22:36:49Z] All steps executed successfully
+[2025-12-07T22:36:49Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T22:58:30Z] === Netem Controller Starting ===
+[2025-12-07T22:58:30Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T22:58:30Z] Targets: server client
+[2025-12-07T22:58:30Z] Interface: eth0
+[2025-12-07T22:58:30Z] Scenario has 1 steps
+[2025-12-07T22:58:30Z] 
+[2025-12-07T22:58:30Z] --- Step 1/1 (duration: 10s) ---
+[2025-12-07T22:58:30Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T22:58:30Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T22:58:30Z]   ✓ TBF applied
+[2025-12-07T22:58:30Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T22:58:30Z]   ✓ Netem applied
+[2025-12-07T22:58:30Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T22:58:30Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T22:58:30Z]   ✓ TBF applied
+[2025-12-07T22:58:30Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T22:58:30Z]   ✓ Netem applied
+[2025-12-07T22:58:30Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T22:58:32Z] Sentinel file updated: step 1/1
+[2025-12-07T22:58:33Z] Waiting 8s before next step...
+[2025-12-07T22:58:41Z] 
+[2025-12-07T22:58:41Z] === Scenario Complete ===
+[2025-12-07T22:58:41Z] All steps executed successfully
+[2025-12-07T22:58:41Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T22:59:40Z] === Netem Controller Starting ===
+[2025-12-07T22:59:40Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T22:59:40Z] Targets: server client
+[2025-12-07T22:59:40Z] Interface: eth0
+[2025-12-07T22:59:40Z] Scenario has 1 steps
+[2025-12-07T22:59:40Z] 
+[2025-12-07T22:59:40Z] --- Step 1/1 (duration: 10s) ---
+[2025-12-07T22:59:40Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T22:59:40Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T22:59:40Z]   ✓ TBF applied
+[2025-12-07T22:59:40Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T22:59:40Z]   ✓ Netem applied
+[2025-12-07T22:59:40Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T22:59:40Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T22:59:40Z]   ✓ TBF applied
+[2025-12-07T22:59:40Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T22:59:41Z]   ✓ Netem applied
+[2025-12-07T22:59:41Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T22:59:43Z] Sentinel file updated: step 1/1
+[2025-12-07T22:59:43Z] Waiting 8s before next step...
+[2025-12-07T22:59:51Z] 
+[2025-12-07T22:59:51Z] === Scenario Complete ===
+[2025-12-07T22:59:51Z] All steps executed successfully
+[2025-12-07T22:59:51Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:04:14Z] === Netem Controller Starting ===
+[2025-12-07T23:04:14Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:04:14Z] Targets: server client
+[2025-12-07T23:04:14Z] Interface: eth0
+[2025-12-07T23:04:14Z] Scenario has 1 steps
+[2025-12-07T23:04:14Z] 
+[2025-12-07T23:04:14Z] --- Step 1/1 (duration: 10s) ---
+[2025-12-07T23:04:14Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:04:14Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:04:14Z]   ✓ TBF applied
+[2025-12-07T23:04:14Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:04:14Z]   ✓ Netem applied
+[2025-12-07T23:04:14Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:04:14Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:04:14Z]   ✓ TBF applied
+[2025-12-07T23:04:14Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:04:14Z]   ✓ Netem applied
+[2025-12-07T23:04:14Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:04:16Z] Sentinel file updated: step 1/1
+[2025-12-07T23:04:16Z] Waiting 8s before next step...
+[2025-12-07T23:04:24Z] 
+[2025-12-07T23:04:24Z] === Scenario Complete ===
+[2025-12-07T23:04:24Z] All steps executed successfully
+[2025-12-07T23:04:24Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:11:23Z] === Netem Controller Starting ===
+[2025-12-07T23:11:23Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:11:23Z] Targets: server client
+[2025-12-07T23:11:23Z] Interface: eth0
+[2025-12-07T23:11:23Z] Scenario has 1 steps
+[2025-12-07T23:11:23Z] 
+[2025-12-07T23:11:23Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:11:23Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:11:23Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:11:23Z]   ✓ TBF applied
+[2025-12-07T23:11:23Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:11:23Z]   ✓ Netem applied
+[2025-12-07T23:11:23Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:11:23Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:11:23Z]   ✓ TBF applied
+[2025-12-07T23:11:23Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:11:23Z]   ✓ Netem applied
+[2025-12-07T23:11:23Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:11:25Z] Sentinel file updated: step 1/1
+[2025-12-07T23:11:25Z] Waiting 28s before next step...
+[2025-12-07T23:11:53Z] 
+[2025-12-07T23:11:53Z] === Scenario Complete ===
+[2025-12-07T23:11:53Z] All steps executed successfully
+[2025-12-07T23:11:53Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:12:36Z] === Netem Controller Starting ===
+[2025-12-07T23:12:36Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:12:36Z] Targets: server client
+[2025-12-07T23:12:36Z] Interface: eth0
+[2025-12-07T23:12:36Z] Scenario has 1 steps
+[2025-12-07T23:12:36Z] 
+[2025-12-07T23:12:36Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:12:36Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:12:37Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:12:37Z]   ✓ TBF applied
+[2025-12-07T23:12:37Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:12:37Z]   ✓ Netem applied
+[2025-12-07T23:12:37Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:12:37Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:12:37Z]   ✓ TBF applied
+[2025-12-07T23:12:37Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:12:37Z]   ✓ Netem applied
+[2025-12-07T23:12:37Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:12:39Z] Sentinel file updated: step 1/1
+[2025-12-07T23:12:39Z] Waiting 28s before next step...
+[2025-12-07T23:13:07Z] 
+[2025-12-07T23:13:07Z] === Scenario Complete ===
+[2025-12-07T23:13:07Z] All steps executed successfully
+[2025-12-07T23:13:07Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:14:41Z] === Netem Controller Starting ===
+[2025-12-07T23:14:41Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:14:41Z] Targets: server client
+[2025-12-07T23:14:41Z] Interface: eth0
+[2025-12-07T23:14:41Z] Scenario has 1 steps
+[2025-12-07T23:14:41Z] 
+[2025-12-07T23:14:41Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:14:41Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:14:41Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:14:41Z]   ✓ TBF applied
+[2025-12-07T23:14:41Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:14:41Z]   ✓ Netem applied
+[2025-12-07T23:14:41Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:14:41Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:14:41Z]   ✓ TBF applied
+[2025-12-07T23:14:41Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:14:41Z]   ✓ Netem applied
+[2025-12-07T23:14:41Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:14:43Z] Sentinel file updated: step 1/1
+[2025-12-07T23:14:43Z] Waiting 28s before next step...
+[2025-12-07T23:15:11Z] 
+[2025-12-07T23:15:11Z] === Scenario Complete ===
+[2025-12-07T23:15:11Z] All steps executed successfully
+[2025-12-07T23:15:11Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:22:06Z] === Netem Controller Starting ===
+[2025-12-07T23:22:06Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:22:06Z] Targets: server client
+[2025-12-07T23:22:06Z] Interface: eth0
+[2025-12-07T23:22:06Z] Scenario has 1 steps
+[2025-12-07T23:22:06Z] 
+[2025-12-07T23:22:06Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:22:06Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:22:06Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:22:07Z]   ✓ TBF applied
+[2025-12-07T23:22:07Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:22:07Z]   ✓ Netem applied
+[2025-12-07T23:22:07Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:22:07Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:22:07Z]   ✓ TBF applied
+[2025-12-07T23:22:07Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:22:07Z]   ✓ Netem applied
+[2025-12-07T23:22:07Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:22:09Z] Sentinel file updated: step 1/1
+[2025-12-07T23:22:09Z] Waiting 28s before next step...
+[2025-12-07T23:22:37Z] 
+[2025-12-07T23:22:37Z] === Scenario Complete ===
+[2025-12-07T23:22:37Z] All steps executed successfully
+[2025-12-07T23:22:37Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:23:14Z] === Netem Controller Starting ===
+[2025-12-07T23:23:14Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:23:14Z] Targets: server client
+[2025-12-07T23:23:14Z] Interface: eth0
+[2025-12-07T23:23:14Z] Scenario has 1 steps
+[2025-12-07T23:23:14Z] 
+[2025-12-07T23:23:14Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:23:14Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:23:14Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:23:14Z]   ✓ TBF applied
+[2025-12-07T23:23:14Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:23:14Z]   ✓ Netem applied
+[2025-12-07T23:23:14Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:23:14Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:23:14Z]   ✓ TBF applied
+[2025-12-07T23:23:14Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:23:14Z]   ✓ Netem applied
+[2025-12-07T23:23:14Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:23:16Z] Sentinel file updated: step 1/1
+[2025-12-07T23:23:16Z] Waiting 28s before next step...
+[2025-12-07T23:23:44Z] 
+[2025-12-07T23:23:44Z] === Scenario Complete ===
+[2025-12-07T23:23:44Z] All steps executed successfully
+[2025-12-07T23:23:44Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:24:22Z] === Netem Controller Starting ===
+[2025-12-07T23:24:22Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:24:22Z] Targets: server client
+[2025-12-07T23:24:22Z] Interface: eth0
+[2025-12-07T23:24:22Z] Scenario has 1 steps
+[2025-12-07T23:24:22Z] 
+[2025-12-07T23:24:22Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:24:22Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:24:22Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:24:22Z]   ✓ TBF applied
+[2025-12-07T23:24:22Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:24:22Z]   ✓ Netem applied
+[2025-12-07T23:24:22Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:24:22Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:24:22Z]   ✓ TBF applied
+[2025-12-07T23:24:22Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:24:22Z]   ✓ Netem applied
+[2025-12-07T23:24:22Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:24:24Z] Sentinel file updated: step 1/1
+[2025-12-07T23:24:24Z] Waiting 28s before next step...
+[2025-12-07T23:24:52Z] 
+[2025-12-07T23:24:52Z] === Scenario Complete ===
+[2025-12-07T23:24:52Z] All steps executed successfully
+[2025-12-07T23:24:52Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:25:29Z] === Netem Controller Starting ===
+[2025-12-07T23:25:29Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:25:29Z] Targets: server client
+[2025-12-07T23:25:29Z] Interface: eth0
+[2025-12-07T23:25:29Z] Scenario has 1 steps
+[2025-12-07T23:25:29Z] 
+[2025-12-07T23:25:29Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:25:29Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:25:29Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:25:29Z]   ✓ TBF applied
+[2025-12-07T23:25:29Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:25:29Z]   ✓ Netem applied
+[2025-12-07T23:25:30Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:25:30Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:25:30Z]   ✓ TBF applied
+[2025-12-07T23:25:30Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:25:30Z]   ✓ Netem applied
+[2025-12-07T23:25:30Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:25:32Z] Sentinel file updated: step 1/1
+[2025-12-07T23:25:32Z] Waiting 28s before next step...
+[2025-12-07T23:26:00Z] 
+[2025-12-07T23:26:00Z] === Scenario Complete ===
+[2025-12-07T23:26:00Z] All steps executed successfully
+[2025-12-07T23:26:00Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:26:37Z] === Netem Controller Starting ===
+[2025-12-07T23:26:37Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:26:37Z] Targets: server client
+[2025-12-07T23:26:37Z] Interface: eth0
+[2025-12-07T23:26:37Z] Scenario has 1 steps
+[2025-12-07T23:26:37Z] 
+[2025-12-07T23:26:37Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:26:37Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:26:37Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:26:37Z]   ✓ TBF applied
+[2025-12-07T23:26:37Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:26:37Z]   ✓ Netem applied
+[2025-12-07T23:26:37Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:26:37Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:26:37Z]   ✓ TBF applied
+[2025-12-07T23:26:37Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:26:37Z]   ✓ Netem applied
+[2025-12-07T23:26:37Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:26:39Z] Sentinel file updated: step 1/1
+[2025-12-07T23:26:39Z] Waiting 28s before next step...
+[2025-12-07T23:27:07Z] 
+[2025-12-07T23:27:07Z] === Scenario Complete ===
+[2025-12-07T23:27:07Z] All steps executed successfully
+[2025-12-07T23:27:07Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:27:44Z] === Netem Controller Starting ===
+[2025-12-07T23:27:44Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:27:44Z] Targets: server client
+[2025-12-07T23:27:44Z] Interface: eth0
+[2025-12-07T23:27:44Z] Scenario has 1 steps
+[2025-12-07T23:27:44Z] 
+[2025-12-07T23:27:44Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:27:44Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:27:45Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:27:45Z]   ✓ TBF applied
+[2025-12-07T23:27:45Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:27:45Z]   ✓ Netem applied
+[2025-12-07T23:27:45Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:27:45Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:27:45Z]   ✓ TBF applied
+[2025-12-07T23:27:45Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:27:45Z]   ✓ Netem applied
+[2025-12-07T23:27:45Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:27:47Z] Sentinel file updated: step 1/1
+[2025-12-07T23:27:47Z] Waiting 28s before next step...
+[2025-12-07T23:28:15Z] 
+[2025-12-07T23:28:15Z] === Scenario Complete ===
+[2025-12-07T23:28:15Z] All steps executed successfully
+[2025-12-07T23:28:15Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:28:52Z] === Netem Controller Starting ===
+[2025-12-07T23:28:52Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:28:52Z] Targets: server client
+[2025-12-07T23:28:52Z] Interface: eth0
+[2025-12-07T23:28:52Z] Scenario has 1 steps
+[2025-12-07T23:28:52Z] 
+[2025-12-07T23:28:52Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:28:52Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:28:52Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:28:52Z]   ✓ TBF applied
+[2025-12-07T23:28:52Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:28:52Z]   ✓ Netem applied
+[2025-12-07T23:28:52Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:28:52Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:28:52Z]   ✓ TBF applied
+[2025-12-07T23:28:52Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:28:52Z]   ✓ Netem applied
+[2025-12-07T23:28:52Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:28:54Z] Sentinel file updated: step 1/1
+[2025-12-07T23:28:54Z] Waiting 28s before next step...
+[2025-12-07T23:29:22Z] 
+[2025-12-07T23:29:22Z] === Scenario Complete ===
+[2025-12-07T23:29:22Z] All steps executed successfully
+[2025-12-07T23:29:22Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:29:59Z] === Netem Controller Starting ===
+[2025-12-07T23:29:59Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:29:59Z] Targets: server client
+[2025-12-07T23:30:00Z] Interface: eth0
+[2025-12-07T23:30:00Z] Scenario has 1 steps
+[2025-12-07T23:30:00Z] 
+[2025-12-07T23:30:00Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:30:00Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:30:00Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:30:00Z]   ✓ TBF applied
+[2025-12-07T23:30:00Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:30:00Z]   ✓ Netem applied
+[2025-12-07T23:30:00Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:30:00Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:30:00Z]   ✓ TBF applied
+[2025-12-07T23:30:00Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:30:00Z]   ✓ Netem applied
+[2025-12-07T23:30:00Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:30:02Z] Sentinel file updated: step 1/1
+[2025-12-07T23:30:02Z] Waiting 28s before next step...
+[2025-12-07T23:30:30Z] 
+[2025-12-07T23:30:30Z] === Scenario Complete ===
+[2025-12-07T23:30:30Z] All steps executed successfully
+[2025-12-07T23:30:30Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:31:07Z] === Netem Controller Starting ===
+[2025-12-07T23:31:07Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:31:07Z] Targets: server client
+[2025-12-07T23:31:07Z] Interface: eth0
+[2025-12-07T23:31:07Z] Scenario has 1 steps
+[2025-12-07T23:31:07Z] 
+[2025-12-07T23:31:07Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:31:07Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:31:07Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:31:07Z]   ✓ TBF applied
+[2025-12-07T23:31:07Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:31:07Z]   ✓ Netem applied
+[2025-12-07T23:31:07Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:31:08Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:31:08Z]   ✓ TBF applied
+[2025-12-07T23:31:08Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:31:08Z]   ✓ Netem applied
+[2025-12-07T23:31:08Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:31:10Z] Sentinel file updated: step 1/1
+[2025-12-07T23:31:10Z] Waiting 28s before next step...
+[2025-12-07T23:31:38Z] 
+[2025-12-07T23:31:38Z] === Scenario Complete ===
+[2025-12-07T23:31:38Z] All steps executed successfully
+[2025-12-07T23:31:38Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:32:14Z] === Netem Controller Starting ===
+[2025-12-07T23:32:15Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:32:15Z] Targets: server client
+[2025-12-07T23:32:15Z] Interface: eth0
+[2025-12-07T23:32:15Z] Scenario has 1 steps
+[2025-12-07T23:32:15Z] 
+[2025-12-07T23:32:15Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:32:15Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:32:15Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:32:15Z]   ✓ TBF applied
+[2025-12-07T23:32:15Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:32:15Z]   ✓ Netem applied
+[2025-12-07T23:32:15Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:32:15Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:32:15Z]   ✓ TBF applied
+[2025-12-07T23:32:15Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:32:15Z]   ✓ Netem applied
+[2025-12-07T23:32:15Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:32:17Z] Sentinel file updated: step 1/1
+[2025-12-07T23:32:17Z] Waiting 28s before next step...
+[2025-12-07T23:32:45Z] 
+[2025-12-07T23:32:45Z] === Scenario Complete ===
+[2025-12-07T23:32:45Z] All steps executed successfully
+[2025-12-07T23:32:45Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:33:22Z] === Netem Controller Starting ===
+[2025-12-07T23:33:22Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:33:22Z] Targets: server client
+[2025-12-07T23:33:22Z] Interface: eth0
+[2025-12-07T23:33:22Z] Scenario has 1 steps
+[2025-12-07T23:33:22Z] 
+[2025-12-07T23:33:22Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:33:22Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:33:22Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:33:22Z]   ✓ TBF applied
+[2025-12-07T23:33:22Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:33:22Z]   ✓ Netem applied
+[2025-12-07T23:33:22Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:33:22Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:33:22Z]   ✓ TBF applied
+[2025-12-07T23:33:22Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:33:22Z]   ✓ Netem applied
+[2025-12-07T23:33:22Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:33:24Z] Sentinel file updated: step 1/1
+[2025-12-07T23:33:24Z] Waiting 28s before next step...
+[2025-12-07T23:33:52Z] 
+[2025-12-07T23:33:52Z] === Scenario Complete ===
+[2025-12-07T23:33:52Z] All steps executed successfully
+[2025-12-07T23:33:52Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:34:29Z] === Netem Controller Starting ===
+[2025-12-07T23:34:29Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:34:29Z] Targets: server client
+[2025-12-07T23:34:29Z] Interface: eth0
+[2025-12-07T23:34:29Z] Scenario has 1 steps
+[2025-12-07T23:34:29Z] 
+[2025-12-07T23:34:29Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:34:29Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:34:29Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:34:29Z]   ✓ TBF applied
+[2025-12-07T23:34:29Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:34:29Z]   ✓ Netem applied
+[2025-12-07T23:34:29Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:34:29Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:34:29Z]   ✓ TBF applied
+[2025-12-07T23:34:29Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:34:30Z]   ✓ Netem applied
+[2025-12-07T23:34:30Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:34:32Z] Sentinel file updated: step 1/1
+[2025-12-07T23:34:32Z] Waiting 28s before next step...
+[2025-12-07T23:35:00Z] 
+[2025-12-07T23:35:00Z] === Scenario Complete ===
+[2025-12-07T23:35:00Z] All steps executed successfully
+[2025-12-07T23:35:00Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:35:37Z] === Netem Controller Starting ===
+[2025-12-07T23:35:37Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:35:37Z] Targets: server client
+[2025-12-07T23:35:37Z] Interface: eth0
+[2025-12-07T23:35:37Z] Scenario has 1 steps
+[2025-12-07T23:35:37Z] 
+[2025-12-07T23:35:37Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:35:37Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:35:37Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:35:37Z]   ✓ TBF applied
+[2025-12-07T23:35:37Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:35:37Z]   ✓ Netem applied
+[2025-12-07T23:35:37Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:35:37Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:35:37Z]   ✓ TBF applied
+[2025-12-07T23:35:37Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:35:37Z]   ✓ Netem applied
+[2025-12-07T23:35:37Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:35:39Z] Sentinel file updated: step 1/1
+[2025-12-07T23:35:39Z] Waiting 28s before next step...
+[2025-12-07T23:36:07Z] 
+[2025-12-07T23:36:07Z] === Scenario Complete ===
+[2025-12-07T23:36:07Z] All steps executed successfully
+[2025-12-07T23:36:07Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:36:44Z] === Netem Controller Starting ===
+[2025-12-07T23:36:44Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:36:44Z] Targets: server client
+[2025-12-07T23:36:44Z] Interface: eth0
+[2025-12-07T23:36:44Z] Scenario has 1 steps
+[2025-12-07T23:36:44Z] 
+[2025-12-07T23:36:44Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:36:44Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:36:44Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:36:44Z]   ✓ TBF applied
+[2025-12-07T23:36:44Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:36:44Z]   ✓ Netem applied
+[2025-12-07T23:36:44Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:36:44Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:36:44Z]   ✓ TBF applied
+[2025-12-07T23:36:44Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:36:44Z]   ✓ Netem applied
+[2025-12-07T23:36:45Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:36:47Z] Sentinel file updated: step 1/1
+[2025-12-07T23:36:47Z] Waiting 28s before next step...
+[2025-12-07T23:37:15Z] 
+[2025-12-07T23:37:15Z] === Scenario Complete ===
+[2025-12-07T23:37:15Z] All steps executed successfully
+[2025-12-07T23:37:15Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:37:52Z] === Netem Controller Starting ===
+[2025-12-07T23:37:52Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:37:52Z] Targets: server client
+[2025-12-07T23:37:52Z] Interface: eth0
+[2025-12-07T23:37:52Z] Scenario has 1 steps
+[2025-12-07T23:37:52Z] 
+[2025-12-07T23:37:52Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:37:52Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:37:52Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:37:52Z]   ✓ TBF applied
+[2025-12-07T23:37:52Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:37:52Z]   ✓ Netem applied
+[2025-12-07T23:37:52Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:37:52Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:37:52Z]   ✓ TBF applied
+[2025-12-07T23:37:52Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:37:52Z]   ✓ Netem applied
+[2025-12-07T23:37:52Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:37:54Z] Sentinel file updated: step 1/1
+[2025-12-07T23:37:54Z] Waiting 28s before next step...
+[2025-12-07T23:38:22Z] 
+[2025-12-07T23:38:22Z] === Scenario Complete ===
+[2025-12-07T23:38:22Z] All steps executed successfully
+[2025-12-07T23:38:22Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:38:59Z] === Netem Controller Starting ===
+[2025-12-07T23:38:59Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:38:59Z] Targets: server client
+[2025-12-07T23:38:59Z] Interface: eth0
+[2025-12-07T23:38:59Z] Scenario has 1 steps
+[2025-12-07T23:38:59Z] 
+[2025-12-07T23:38:59Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:38:59Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:38:59Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:38:59Z]   ✓ TBF applied
+[2025-12-07T23:38:59Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:38:59Z]   ✓ Netem applied
+[2025-12-07T23:38:59Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:38:59Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:38:59Z]   ✓ TBF applied
+[2025-12-07T23:38:59Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:39:00Z]   ✓ Netem applied
+[2025-12-07T23:39:00Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:39:02Z] Sentinel file updated: step 1/1
+[2025-12-07T23:39:02Z] Waiting 28s before next step...
+[2025-12-07T23:39:30Z] 
+[2025-12-07T23:39:30Z] === Scenario Complete ===
+[2025-12-07T23:39:30Z] All steps executed successfully
+[2025-12-07T23:39:30Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:40:07Z] === Netem Controller Starting ===
+[2025-12-07T23:40:07Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:40:07Z] Targets: server client
+[2025-12-07T23:40:07Z] Interface: eth0
+[2025-12-07T23:40:07Z] Scenario has 1 steps
+[2025-12-07T23:40:07Z] 
+[2025-12-07T23:40:07Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:40:07Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:40:07Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:40:07Z]   ✓ TBF applied
+[2025-12-07T23:40:07Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:40:07Z]   ✓ Netem applied
+[2025-12-07T23:40:07Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:40:07Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:40:07Z]   ✓ TBF applied
+[2025-12-07T23:40:07Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:40:07Z]   ✓ Netem applied
+[2025-12-07T23:40:07Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:40:09Z] Sentinel file updated: step 1/1
+[2025-12-07T23:40:09Z] Waiting 28s before next step...
+[2025-12-07T23:40:37Z] 
+[2025-12-07T23:40:37Z] === Scenario Complete ===
+[2025-12-07T23:40:37Z] All steps executed successfully
+[2025-12-07T23:40:37Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:41:14Z] === Netem Controller Starting ===
+[2025-12-07T23:41:14Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:41:14Z] Targets: server client
+[2025-12-07T23:41:14Z] Interface: eth0
+[2025-12-07T23:41:14Z] Scenario has 1 steps
+[2025-12-07T23:41:14Z] 
+[2025-12-07T23:41:14Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:41:14Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:41:14Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:41:14Z]   ✓ TBF applied
+[2025-12-07T23:41:14Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:41:15Z]   ✓ Netem applied
+[2025-12-07T23:41:15Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:41:15Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:41:15Z]   ✓ TBF applied
+[2025-12-07T23:41:15Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:41:15Z]   ✓ Netem applied
+[2025-12-07T23:41:15Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:41:17Z] Sentinel file updated: step 1/1
+[2025-12-07T23:41:17Z] Waiting 28s before next step...
+[2025-12-07T23:41:45Z] 
+[2025-12-07T23:41:45Z] === Scenario Complete ===
+[2025-12-07T23:41:45Z] All steps executed successfully
+[2025-12-07T23:41:45Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:42:22Z] === Netem Controller Starting ===
+[2025-12-07T23:42:22Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:42:22Z] Targets: server client
+[2025-12-07T23:42:22Z] Interface: eth0
+[2025-12-07T23:42:22Z] Scenario has 1 steps
+[2025-12-07T23:42:22Z] 
+[2025-12-07T23:42:22Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:42:22Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:42:22Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:42:22Z]   ✓ TBF applied
+[2025-12-07T23:42:22Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:42:22Z]   ✓ Netem applied
+[2025-12-07T23:42:22Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:42:22Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:42:22Z]   ✓ TBF applied
+[2025-12-07T23:42:22Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:42:22Z]   ✓ Netem applied
+[2025-12-07T23:42:22Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:42:24Z] Sentinel file updated: step 1/1
+[2025-12-07T23:42:24Z] Waiting 28s before next step...
+[2025-12-07T23:42:52Z] 
+[2025-12-07T23:42:52Z] === Scenario Complete ===
+[2025-12-07T23:42:52Z] All steps executed successfully
+[2025-12-07T23:42:52Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:43:29Z] === Netem Controller Starting ===
+[2025-12-07T23:43:29Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:43:29Z] Targets: server client
+[2025-12-07T23:43:29Z] Interface: eth0
+[2025-12-07T23:43:29Z] Scenario has 1 steps
+[2025-12-07T23:43:29Z] 
+[2025-12-07T23:43:29Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:43:29Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:43:29Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:43:29Z]   ✓ TBF applied
+[2025-12-07T23:43:29Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:43:29Z]   ✓ Netem applied
+[2025-12-07T23:43:29Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:43:29Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:43:29Z]   ✓ TBF applied
+[2025-12-07T23:43:29Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:43:29Z]   ✓ Netem applied
+[2025-12-07T23:43:29Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:43:31Z] Sentinel file updated: step 1/1
+[2025-12-07T23:43:31Z] Waiting 28s before next step...
+[2025-12-07T23:43:59Z] 
+[2025-12-07T23:43:59Z] === Scenario Complete ===
+[2025-12-07T23:43:59Z] All steps executed successfully
+[2025-12-07T23:43:59Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:44:36Z] === Netem Controller Starting ===
+[2025-12-07T23:44:36Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:44:36Z] Targets: server client
+[2025-12-07T23:44:36Z] Interface: eth0
+[2025-12-07T23:44:36Z] Scenario has 1 steps
+[2025-12-07T23:44:36Z] 
+[2025-12-07T23:44:36Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:44:36Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:44:36Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:44:36Z]   ✓ TBF applied
+[2025-12-07T23:44:36Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:44:36Z]   ✓ Netem applied
+[2025-12-07T23:44:36Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:44:36Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:44:36Z]   ✓ TBF applied
+[2025-12-07T23:44:36Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:44:37Z]   ✓ Netem applied
+[2025-12-07T23:44:37Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:44:39Z] Sentinel file updated: step 1/1
+[2025-12-07T23:44:39Z] Waiting 28s before next step...
+[2025-12-07T23:45:07Z] 
+[2025-12-07T23:45:07Z] === Scenario Complete ===
+[2025-12-07T23:45:07Z] All steps executed successfully
+[2025-12-07T23:45:07Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:45:44Z] === Netem Controller Starting ===
+[2025-12-07T23:45:44Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:45:44Z] Targets: server client
+[2025-12-07T23:45:44Z] Interface: eth0
+[2025-12-07T23:45:44Z] Scenario has 1 steps
+[2025-12-07T23:45:44Z] 
+[2025-12-07T23:45:44Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:45:44Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:45:44Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:45:44Z]   ✓ TBF applied
+[2025-12-07T23:45:44Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:45:44Z]   ✓ Netem applied
+[2025-12-07T23:45:44Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:45:44Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:45:44Z]   ✓ TBF applied
+[2025-12-07T23:45:44Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:45:44Z]   ✓ Netem applied
+[2025-12-07T23:45:44Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:45:46Z] Sentinel file updated: step 1/1
+[2025-12-07T23:45:46Z] Waiting 28s before next step...
+[2025-12-07T23:46:14Z] 
+[2025-12-07T23:46:14Z] === Scenario Complete ===
+[2025-12-07T23:46:14Z] All steps executed successfully
+[2025-12-07T23:46:14Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:46:51Z] === Netem Controller Starting ===
+[2025-12-07T23:46:51Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:46:51Z] Targets: server client
+[2025-12-07T23:46:51Z] Interface: eth0
+[2025-12-07T23:46:51Z] Scenario has 1 steps
+[2025-12-07T23:46:51Z] 
+[2025-12-07T23:46:51Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:46:51Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:46:51Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:46:51Z]   ✓ TBF applied
+[2025-12-07T23:46:51Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:46:51Z]   ✓ Netem applied
+[2025-12-07T23:46:51Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:46:51Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:46:52Z]   ✓ TBF applied
+[2025-12-07T23:46:52Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:46:52Z]   ✓ Netem applied
+[2025-12-07T23:46:52Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:46:54Z] Sentinel file updated: step 1/1
+[2025-12-07T23:46:54Z] Waiting 28s before next step...
+[2025-12-07T23:47:22Z] 
+[2025-12-07T23:47:22Z] === Scenario Complete ===
+[2025-12-07T23:47:22Z] All steps executed successfully
+[2025-12-07T23:47:22Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:47:59Z] === Netem Controller Starting ===
+[2025-12-07T23:47:59Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:47:59Z] Targets: server client
+[2025-12-07T23:47:59Z] Interface: eth0
+[2025-12-07T23:47:59Z] Scenario has 1 steps
+[2025-12-07T23:47:59Z] 
+[2025-12-07T23:47:59Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:47:59Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:47:59Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:47:59Z]   ✓ TBF applied
+[2025-12-07T23:47:59Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:47:59Z]   ✓ Netem applied
+[2025-12-07T23:47:59Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:47:59Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:47:59Z]   ✓ TBF applied
+[2025-12-07T23:47:59Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:47:59Z]   ✓ Netem applied
+[2025-12-07T23:47:59Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:48:01Z] Sentinel file updated: step 1/1
+[2025-12-07T23:48:01Z] Waiting 28s before next step...
+[2025-12-07T23:48:29Z] 
+[2025-12-07T23:48:29Z] === Scenario Complete ===
+[2025-12-07T23:48:29Z] All steps executed successfully
+[2025-12-07T23:48:29Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:49:07Z] === Netem Controller Starting ===
+[2025-12-07T23:49:07Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:49:07Z] Targets: server client
+[2025-12-07T23:49:07Z] Interface: eth0
+[2025-12-07T23:49:07Z] Scenario has 1 steps
+[2025-12-07T23:49:07Z] 
+[2025-12-07T23:49:07Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:49:07Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:49:07Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:49:07Z]   ✓ TBF applied
+[2025-12-07T23:49:07Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:49:07Z]   ✓ Netem applied
+[2025-12-07T23:49:07Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:49:07Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:49:07Z]   ✓ TBF applied
+[2025-12-07T23:49:07Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:49:07Z]   ✓ Netem applied
+[2025-12-07T23:49:07Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:49:09Z] Sentinel file updated: step 1/1
+[2025-12-07T23:49:09Z] Waiting 28s before next step...
+[2025-12-07T23:49:37Z] 
+[2025-12-07T23:49:37Z] === Scenario Complete ===
+[2025-12-07T23:49:37Z] All steps executed successfully
+[2025-12-07T23:49:37Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:50:15Z] === Netem Controller Starting ===
+[2025-12-07T23:50:15Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:50:15Z] Targets: server client
+[2025-12-07T23:50:15Z] Interface: eth0
+[2025-12-07T23:50:15Z] Scenario has 1 steps
+[2025-12-07T23:50:15Z] 
+[2025-12-07T23:50:15Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:50:15Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:50:15Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:50:15Z]   ✓ TBF applied
+[2025-12-07T23:50:15Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:50:15Z]   ✓ Netem applied
+[2025-12-07T23:50:15Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:50:15Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:50:15Z]   ✓ TBF applied
+[2025-12-07T23:50:15Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:50:15Z]   ✓ Netem applied
+[2025-12-07T23:50:15Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:50:18Z] Sentinel file updated: step 1/1
+[2025-12-07T23:50:18Z] Waiting 28s before next step...
+[2025-12-07T23:50:46Z] 
+[2025-12-07T23:50:46Z] === Scenario Complete ===
+[2025-12-07T23:50:46Z] All steps executed successfully
+[2025-12-07T23:50:46Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:51:22Z] === Netem Controller Starting ===
+[2025-12-07T23:51:22Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:51:22Z] Targets: server client
+[2025-12-07T23:51:23Z] Interface: eth0
+[2025-12-07T23:51:23Z] Scenario has 1 steps
+[2025-12-07T23:51:23Z] 
+[2025-12-07T23:51:23Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:51:23Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:51:23Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:51:23Z]   ✓ TBF applied
+[2025-12-07T23:51:23Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:51:23Z]   ✓ Netem applied
+[2025-12-07T23:51:23Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:51:23Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:51:23Z]   ✓ TBF applied
+[2025-12-07T23:51:23Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:51:23Z]   ✓ Netem applied
+[2025-12-07T23:51:23Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:51:25Z] Sentinel file updated: step 1/1
+[2025-12-07T23:51:25Z] Waiting 28s before next step...
+[2025-12-07T23:51:53Z] 
+[2025-12-07T23:51:53Z] === Scenario Complete ===
+[2025-12-07T23:51:53Z] All steps executed successfully
+[2025-12-07T23:51:53Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:52:30Z] === Netem Controller Starting ===
+[2025-12-07T23:52:30Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:52:30Z] Targets: server client
+[2025-12-07T23:52:30Z] Interface: eth0
+[2025-12-07T23:52:30Z] Scenario has 1 steps
+[2025-12-07T23:52:30Z] 
+[2025-12-07T23:52:30Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:52:30Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:52:30Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:52:30Z]   ✓ TBF applied
+[2025-12-07T23:52:30Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:52:30Z]   ✓ Netem applied
+[2025-12-07T23:52:30Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:52:30Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:52:30Z]   ✓ TBF applied
+[2025-12-07T23:52:30Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:52:30Z]   ✓ Netem applied
+[2025-12-07T23:52:30Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:52:33Z] Sentinel file updated: step 1/1
+[2025-12-07T23:52:33Z] Waiting 28s before next step...
+[2025-12-07T23:53:01Z] 
+[2025-12-07T23:53:01Z] === Scenario Complete ===
+[2025-12-07T23:53:01Z] All steps executed successfully
+[2025-12-07T23:53:01Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:53:37Z] === Netem Controller Starting ===
+[2025-12-07T23:53:37Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:53:37Z] Targets: server client
+[2025-12-07T23:53:37Z] Interface: eth0
+[2025-12-07T23:53:37Z] Scenario has 1 steps
+[2025-12-07T23:53:37Z] 
+[2025-12-07T23:53:37Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:53:37Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:53:38Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:53:38Z]   ✓ TBF applied
+[2025-12-07T23:53:38Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:53:38Z]   ✓ Netem applied
+[2025-12-07T23:53:38Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:53:38Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:53:38Z]   ✓ TBF applied
+[2025-12-07T23:53:38Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:53:38Z]   ✓ Netem applied
+[2025-12-07T23:53:38Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:53:40Z] Sentinel file updated: step 1/1
+[2025-12-07T23:53:40Z] Waiting 28s before next step...
+[2025-12-07T23:54:08Z] 
+[2025-12-07T23:54:08Z] === Scenario Complete ===
+[2025-12-07T23:54:08Z] All steps executed successfully
+[2025-12-07T23:54:08Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-07T23:54:49Z] === Netem Controller Starting ===
+[2025-12-07T23:54:49Z] Scenario: scenarios/high_delay_test.json
+[2025-12-07T23:54:49Z] Targets: server client
+[2025-12-07T23:54:49Z] Interface: eth0
+[2025-12-07T23:54:49Z] Scenario has 1 steps
+[2025-12-07T23:54:49Z] 
+[2025-12-07T23:54:49Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-07T23:54:49Z] Applying to server: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:54:49Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:54:49Z]   ✓ TBF applied
+[2025-12-07T23:54:49Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:54:49Z]   ✓ Netem applied
+[2025-12-07T23:54:49Z] Applying to client: delay=1000ms jitter=5ms loss=75% rate=10000kbit
+[2025-12-07T23:54:49Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-07T23:54:49Z]   ✓ TBF applied
+[2025-12-07T23:54:49Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 1000ms 5ms distribution normal loss 75%
+[2025-12-07T23:54:50Z]   ✓ Netem applied
+[2025-12-07T23:54:50Z] Waiting 2s for tc rules to stabilize...
+[2025-12-07T23:54:52Z] Sentinel file updated: step 1/1
+[2025-12-07T23:54:52Z] Waiting 28s before next step...
+[2025-12-07T23:55:20Z] 
+[2025-12-07T23:55:20Z] === Scenario Complete ===
+[2025-12-07T23:55:20Z] All steps executed successfully
+[2025-12-07T23:55:20Z] Controller staying active. Press Ctrl+C to cleanup and exit.

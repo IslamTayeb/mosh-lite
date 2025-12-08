@@ -1,4 +1,5 @@
 import csv
+import os
 
 
 def parse_csv(filename: str) -> list[dict]:
@@ -46,13 +47,20 @@ def calculate_statistics(latency: dict[int, float]) -> dict[str, float]:
 
 
 def main():
-    client_log = parse_csv("client_out.log")
-    server_log = parse_csv("output.log")
+    client_log = parse_csv("../testbed/logs/client_out.log")
+    server_log = parse_csv("../testbed/logs/output.log")
 
     latency = calculate_latency(client_log, server_log)
     stats = calculate_statistics(latency)
 
-    with open("latency.csv", "w+") as f:
+    filename_base = "latency"
+    filename = f"{filename_base}.csv"
+    i = 1
+    while os.path.exists(filename):
+        filename = f"{filename_base}{i}.csv"
+        i += 1
+
+    with open(filename, "w+") as f:
         for stat, value in stats.items():
             f.write(f"{stat},{value}\n")
 
