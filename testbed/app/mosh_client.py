@@ -61,8 +61,21 @@ def wait_for_network_ready(sentinel_path="/artifacts/netem_ready.json", timeout=
     raise TimeoutError(f"Network conditions not ready after {timeout}s")
 
 
+def load_test_states(filepath="/testbed/test_states.txt"):
+    """Load test states from file."""
+    try:
+        with open(filepath, 'r') as f:
+            states = [line.strip() for line in f if line.strip()]
+        print(f"[CLIENT] Loaded {len(states)} test states from {filepath}")
+        return states
+    except Exception as e:
+        print(f"[CLIENT] Warning: Could not load test states from {filepath}: {e}")
+        print(f"[CLIENT] Falling back to default states")
+        return ["abc", "cde", "edf", "adsfhadsf", "fgi"]
+
 async def automated_writer(queue, delay=0.05):
-    states = itertools.cycle(["abc", "cde", "edf", "adsfhadsf", "fgi"])
+    states_list = load_test_states()
+    states = itertools.cycle(states_list)
 
     for state in states:
         await queue.put(LocalEvent(message=state))

@@ -1,0 +1,17 @@
+{
+  "scenario_name": "Zero Loss Test",
+  "description": "0% loss, 1s delay - verify FIFO ordering",
+  "created_by": "netem_testbed",
+  "seed": 42,
+  "notes": "0% loss, 1s delay to verify FIFO",
+  "steps": [
+    {
+      "duration_s": 15,
+      "delay_ms": 1000,
+      "jitter_ms": 5,
+      "loss_pct": 0,
+      "rate_kbit": 10000,
+      "description": "0% loss, 1s delay"
+    }
+  ]
+}

@@ -43,6 +43,7 @@ services:
       - ./logs:/logs
       - ./artifacts:/artifacts
       - ./scenarios:/scenarios:ro
+      - ./test_states.txt:/testbed/test_states.txt:ro
     stdin_open: true
     tty: true
     depends_on:
