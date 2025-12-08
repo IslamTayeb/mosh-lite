@@ -1,0 +1,17 @@
+{
+  "scenario_name": "Packet Loss 50%",
+  "description": "Test with 50% packet loss",
+  "created_by": "packetloss_test_suite",
+  "seed": 42,
+  "notes": "10s test with 50% packet loss, 50ms delay",
+  "steps": [
+    {
+      "duration_s": 10,
+      "delay_ms": 50,
+      "jitter_ms": 5,
+      "loss_pct": 50,
+      "rate_kbit": 10000,
+      "description": "50% packet loss with 50ms delay"
+    }
+  ]
+}

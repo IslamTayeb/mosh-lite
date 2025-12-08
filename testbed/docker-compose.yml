@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   server:
-    build: 
+    build:
       context: ..
       dockerfile: testbed/Dockerfile
     container_name: server
@@ -24,9 +24,9 @@ services:
     tty: true
 
   client:
-    build: 
+    build:
       context: ..
-      dockerfile: testbed/Dockerfile 
+      dockerfile: testbed/Dockerfile
     container_name: client
     hostname: client
     cap_add:
