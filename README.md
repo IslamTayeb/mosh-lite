@@ -8,6 +8,8 @@ This project investigates Mosh's choice to always use the "assumed receiver stat
 
 **Key Finding:** Testing showed that reference state selection strategy has minimal impact on AoI under moderate to extreme packet loss (75%), suggesting SSP's original timeout-based approach is near-optimal for this metric in typical mobile environments.
 
+For detailed implementation analysis and design decisions, see [`final_report.pdf`](final_report.pdf).
+
 ## Quick Start
 
 ### Run a Test with Docker
