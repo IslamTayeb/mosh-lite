@@ -1,0 +1,17 @@
+{
+  "scenario_name": "High Delay",
+  "description": "High Delay",
+  "created_by": "netem_testbed",
+  "seed": 42,
+  "notes": "10s good link, 10s degraded link with high latency and loss, 10s recovery",
+  "steps": [
+    {
+      "duration_s": 30,
+      "delay_ms": 1000,
+      "jitter_ms": 5,
+      "loss_pct": 75,
+      "rate_kbit": 10000,
+      "description": "Good link: low latency, no loss, 10Mbps"
+    }
+  ]
+}

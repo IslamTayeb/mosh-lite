@@ -1,0 +1,48 @@
+[2025-12-08T02:30:47Z] === Netem Controller Starting ===
+[2025-12-08T02:30:47Z] Scenario: scenarios/generated/loss_0pct.json
+[2025-12-08T02:30:47Z] Targets: mosh_test_0-server-1 mosh_test_0-client-1
+[2025-12-08T02:30:47Z] Interface: eth0
+[2025-12-08T02:30:47Z] Scenario has 1 steps
+[2025-12-08T02:30:47Z] 
+[2025-12-08T02:30:47Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-08T02:30:47Z] Applying to mosh_test_0-server-1: delay=50ms jitter=5ms loss=0% rate=10000kbit
+[2025-12-08T02:30:47Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-08T02:30:47Z]   ✓ TBF applied
+[2025-12-08T02:30:47Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 50ms 5ms distribution normal
+[2025-12-08T02:30:47Z]   ✓ Netem applied
+[2025-12-08T02:30:47Z] Applying to mosh_test_0-client-1: delay=50ms jitter=5ms loss=0% rate=10000kbit
+[2025-12-08T02:30:47Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-08T02:30:47Z]   ✓ TBF applied
+[2025-12-08T02:30:47Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 50ms 5ms distribution normal
+[2025-12-08T02:30:47Z]   ✓ Netem applied
+[2025-12-08T02:30:47Z] Waiting 2s for tc rules to stabilize...
+[2025-12-08T02:30:49Z] Sentinel file updated: step 1/1
+[2025-12-08T02:30:49Z] Waiting 28s before next step...
+[2025-12-08T02:31:17Z] 
+[2025-12-08T02:31:17Z] === Scenario Complete ===
+[2025-12-08T02:31:17Z] All steps executed successfully
+[2025-12-08T02:31:17Z] Controller staying active. Press Ctrl+C to cleanup and exit.
+[2025-12-08T02:31:45Z] === Netem Controller Starting ===
+[2025-12-08T02:31:45Z] Scenario: scenarios/generated/loss_0pct.json
+[2025-12-08T02:31:45Z] Targets: mosh_test_0-server-1 mosh_test_0-client-1
+[2025-12-08T02:31:45Z] Interface: eth0
+[2025-12-08T02:31:45Z] Scenario has 1 steps
+[2025-12-08T02:31:45Z] 
+[2025-12-08T02:31:45Z] --- Step 1/1 (duration: 30s) ---
+[2025-12-08T02:31:45Z] Applying to mosh_test_0-server-1: delay=50ms jitter=5ms loss=0% rate=10000kbit
+[2025-12-08T02:31:45Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-08T02:31:45Z]   ✓ TBF applied
+[2025-12-08T02:31:45Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 50ms 5ms distribution normal
+[2025-12-08T02:31:45Z]   ✓ Netem applied
+[2025-12-08T02:31:45Z] Applying to mosh_test_0-client-1: delay=50ms jitter=5ms loss=0% rate=10000kbit
+[2025-12-08T02:31:45Z]   CMD: tc qdisc add dev eth0 root handle 1: tbf rate 10000kbit burst 32kbit latency 400ms
+[2025-12-08T02:31:46Z]   ✓ TBF applied
+[2025-12-08T02:31:46Z]   CMD: tc qdisc add dev eth0 parent 1:1 handle 10: netem delay 50ms 5ms distribution normal
+[2025-12-08T02:31:46Z]   ✓ Netem applied
+[2025-12-08T02:31:46Z] Waiting 2s for tc rules to stabilize...
+[2025-12-08T02:31:48Z] Sentinel file updated: step 1/1
+[2025-12-08T02:31:48Z] Waiting 28s before next step...
+[2025-12-08T02:32:16Z] 
+[2025-12-08T02:32:16Z] === Scenario Complete ===
+[2025-12-08T02:32:16Z] All steps executed successfully
+[2025-12-08T02:32:16Z] Controller staying active. Press Ctrl+C to cleanup and exit.

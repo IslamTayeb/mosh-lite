@@ -5,7 +5,7 @@
 
 set -e
 
-SCENARIO=${SCENARIO:-scenarios/variable_link.json}
+SCENARIO=${SCENARIO:-scenarios/high_delay_test.json}
 CLEANUP=${CLEANUP:-true}
 
 echo "Network Testing Testbed"
@@ -59,6 +59,7 @@ for ((i=1; i<=TOTAL_DURATION; i++)); do
     ! kill -0 $CONTROLLER_PID 2>/dev/null && break
 done
 
+rm ./artifacts/netem_ready.json
 sleep 5  # Allow client to write results
 
 # Display results

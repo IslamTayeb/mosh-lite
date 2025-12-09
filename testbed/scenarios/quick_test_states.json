@@ -1,0 +1,17 @@
+{
+  "scenario_name": "Quick Test - New States",
+  "description": "Quick test to verify new test states loading",
+  "created_by": "netem_testbed",
+  "seed": 42,
+  "notes": "5 second test with 0% loss to verify state loading",
+  "steps": [
+    {
+      "duration_s": 5,
+      "delay_ms": 100,
+      "jitter_ms": 5,
+      "loss_pct": 0,
+      "rate_kbit": 10000,
+      "description": "Quick test"
+    }
+  ]
+}
