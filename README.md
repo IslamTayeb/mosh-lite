@@ -56,7 +56,7 @@ python3 figures/scripts/paper_analysis.py
 
 ```
 .
-├── mosh/                    # Core SSP implementation
+├── mosh/                   # Core SSP implementation
 │   ├── sender.py           # SSP sender with λ parameter
 │   ├── receiver.py         # SSP receiver
 │   ├── transport.py        # UDP transport layer with RTT/RTO estimation
@@ -64,7 +64,7 @@ python3 figures/scripts/paper_analysis.py
 │   ├── inflight.py         # In-flight state tracking
 │   ├── datagram.py         # Packet format
 │   └── tests/              # Unit tests
-├── testbed/                 # Docker-based testing infrastructure
+├── testbed/                # Docker-based testing infrastructure
 │   ├── app/                # Testbed application wrappers
 │   │   ├── mosh_client.py  # Client wrapper for automated testing
 │   │   └── mosh_server.py  # Server wrapper
