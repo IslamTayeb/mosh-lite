@@ -1,0 +1,4 @@
+Total packets received: 25
+Packets discarded: 0
+Packets accepted: 25
+Packets discarded (%): 0.0000

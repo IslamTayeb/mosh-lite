@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream:analysis/aggregated_results.json
   "0": {
     "median": {
       "min": 1.0638842582702637,
@@ -117,6 +118,678 @@
         2.2764012015906943,
         1.6341107205032424
       ]
+=======
+  "lambda_0.5_loss_0": {
+    "lambda": "0.5",
+    "loss": "0",
+    "latency": {
+      "average": {
+        "min": 0.033692203977572846,
+        "max": 0.038043168950671995,
+        "mean": 0.034888021863842135,
+        "median": 0.0339468892882852,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "median": {
+        "min": 0.04951620101928711,
+        "max": 0.05051445960998535,
+        "mean": 0.050008624792099,
+        "median": 0.05009627342224121,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 442.0,
+        "max": 444.0,
+        "mean": 442.85714285714283,
+        "median": 443.0,
+        "count": 7,
+        "outliers_removed": 3
+      },
+      "Packets discarded": {
+        "min": 0.0,
+        "max": 32.0,
+        "mean": 22.4,
+        "median": 32.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Total packets received": {
+        "min": 474.0,
+        "max": 477.0,
+        "mean": 475.125,
+        "median": 475.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded (%)": {
+        "min": 0.0,
+        "max": 6.7511,
+        "mean": 4.71723,
+        "median": 6.7368,
+        "count": 10,
+        "outliers_removed": 0
+      }
+    }
+  },
+  "lambda_0.5_loss_10": {
+    "lambda": "0.5",
+    "loss": "10",
+    "latency": {
+      "average": {
+        "min": 0.035748163691030746,
+        "max": 0.040739576186030364,
+        "mean": 0.03786845589088634,
+        "median": 0.037535076424226925,
+        "count": 9,
+        "outliers_removed": 1
+      },
+      "median": {
+        "min": 0.05012845993041992,
+        "max": 0.05054306983947754,
+        "mean": 0.05033510071890695,
+        "median": 0.05038857460021973,
+        "count": 7,
+        "outliers_removed": 3
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 237.0,
+        "max": 244.0,
+        "mean": 240.85714285714286,
+        "median": 241.0,
+        "count": 7,
+        "outliers_removed": 3
+      },
+      "Packets discarded": {
+        "min": 202.0,
+        "max": 209.0,
+        "mean": 205.0,
+        "median": 204.0,
+        "count": 7,
+        "outliers_removed": 3
+      },
+      "Total packets received": {
+        "min": 435.0,
+        "max": 456.0,
+        "mean": 445.77777777777777,
+        "median": 447.0,
+        "count": 9,
+        "outliers_removed": 1
+      },
+      "Packets discarded (%)": {
+        "min": 45.4139,
+        "max": 46.5479,
+        "mean": 45.9783,
+        "median": 45.8613,
+        "count": 7,
+        "outliers_removed": 3
+      }
+    }
+  },
+  "lambda_0.5_loss_25": {
+    "lambda": "0.5",
+    "loss": "25",
+    "latency": {
+      "average": {
+        "min": 0.04378727953484718,
+        "max": 0.05244340208387867,
+        "mean": 0.04664699452276635,
+        "median": 0.04595164272744777,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "median": {
+        "min": 0.05071568489074707,
+        "max": 0.0525357723236084,
+        "mean": 0.051579415798187256,
+        "median": 0.0514676570892334,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 199.0,
+        "max": 211.0,
+        "mean": 204.375,
+        "median": 205.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded": {
+        "min": 185.0,
+        "max": 205.0,
+        "mean": 193.75,
+        "median": 193.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Total packets received": {
+        "min": 389.0,
+        "max": 412.0,
+        "mean": 398.125,
+        "median": 398.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded (%)": {
+        "min": 46.7172,
+        "max": 50.0,
+        "mean": 48.65835,
+        "median": 49.2347,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    }
+  },
+  "lambda_0.5_loss_50": {
+    "lambda": "0.5",
+    "loss": "50",
+    "latency": {
+      "average": {
+        "min": 0.06658690056558382,
+        "max": 2.6905416347542586,
+        "mean": 0.8250583871347519,
+        "median": 0.26098478523788937,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "median": {
+        "min": 0.05292081832885742,
+        "max": 0.1579732894897461,
+        "mean": 0.06686705350875854,
+        "median": 0.05360841751098633,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 175.0,
+        "max": 201.0,
+        "mean": 188.14285714285714,
+        "median": 190.0,
+        "count": 7,
+        "outliers_removed": 3
+      },
+      "Packets discarded": {
+        "min": 0.0,
+        "max": 148.0,
+        "mean": 85.4,
+        "median": 122.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Total packets received": {
+        "min": 231.0,
+        "max": 341.0,
+        "mean": 304.125,
+        "median": 322.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded (%)": {
+        "min": 0.0,
+        "max": 43.4018,
+        "mean": 27.409879999999998,
+        "median": 40.0,
+        "count": 10,
+        "outliers_removed": 0
+      }
+    }
+  },
+  "lambda_0_loss_0": {
+    "lambda": "0",
+    "loss": "0",
+    "latency": {
+      "average": {
+        "min": 0.03350649289864914,
+        "max": 0.03413550743535787,
+        "mean": 0.03388550576696865,
+        "median": 0.03393809850360863,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "median": {
+        "min": 0.049086809158325195,
+        "max": 0.050063371658325195,
+        "mean": 0.049735614231654575,
+        "median": 0.04982256889343262,
+        "count": 7,
+        "outliers_removed": 3
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 441.0,
+        "max": 444.0,
+        "mean": 442.75,
+        "median": 443.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded": {
+        "min": 32.0,
+        "max": 32.0,
+        "mean": 32.0,
+        "median": 32.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Total packets received": {
+        "min": 473.0,
+        "max": 476.0,
+        "mean": 474.625,
+        "median": 475.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded (%)": {
+        "min": 6.5401,
+        "max": 6.7653,
+        "mean": 6.715825,
+        "median": 6.7368,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    }
+  },
+  "lambda_0_loss_10": {
+    "lambda": "0",
+    "loss": "10",
+    "latency": {
+      "average": {
+        "min": 0.036924649998703166,
+        "max": 0.5998388166012971,
+        "mean": 0.2036616212218656,
+        "median": 0.037923280078815354,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "median": {
+        "min": 0.04965400695800781,
+        "max": 0.6238253116607666,
+        "mean": 0.213724684715271,
+        "median": 0.05069231986999512,
+        "count": 10,
+        "outliers_removed": 0
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 20.0,
+        "max": 273.0,
+        "mean": 176.2,
+        "median": 240.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Packets discarded": {
+        "min": 0.0,
+        "max": 232.0,
+        "mean": 141.2,
+        "median": 200.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Total packets received": {
+        "min": 20.0,
+        "max": 456.0,
+        "mean": 317.4,
+        "median": 441.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Packets discarded (%)": {
+        "min": 0.0,
+        "max": 52.6077,
+        "mean": 31.79602,
+        "median": 45.1754,
+        "count": 10,
+        "outliers_removed": 0
+      }
+    }
+  },
+  "lambda_0_loss_25": {
+    "lambda": "0",
+    "loss": "25",
+    "latency": {
+      "average": {
+        "min": 0.042478562415914335,
+        "max": 1.1738937258720399,
+        "mean": 0.49867446273733157,
+        "median": 0.5997100083724313,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "median": {
+        "min": 0.05072212219238281,
+        "max": 1.2001373767852783,
+        "mean": 0.49220354557037355,
+        "median": 0.592827320098877,
+        "count": 10,
+        "outliers_removed": 0
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 16.0,
+        "max": 218.0,
+        "mean": 115.5,
+        "median": 200.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Packets discarded": {
+        "min": 0.0,
+        "max": 200.0,
+        "mean": 91.8,
+        "median": 138.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Total packets received": {
+        "min": 16.0,
+        "max": 404.0,
+        "mean": 207.3,
+        "median": 356.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Packets discarded (%)": {
+        "min": 0.0,
+        "max": 49.505,
+        "mean": 23.37676,
+        "median": 38.764,
+        "count": 10,
+        "outliers_removed": 0
+      }
+    }
+  },
+  "lambda_0_loss_50": {
+    "lambda": "0",
+    "loss": "50",
+    "latency": {
+      "average": {
+        "min": 0.058678036305441786,
+        "max": 1.394790995071124,
+        "mean": 0.506989177606447,
+        "median": 0.26046367249590285,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "median": {
+        "min": 0.0524754524230957,
+        "max": 0.05734586715698242,
+        "mean": 0.054054081439971924,
+        "median": 0.05385088920593262,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 188.0,
+        "max": 215.0,
+        "mean": 199.375,
+        "median": 202.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded": {
+        "min": 0.0,
+        "max": 158.0,
+        "mean": 93.2,
+        "median": 109.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Total packets received": {
+        "min": 263.0,
+        "max": 352.0,
+        "mean": 315.875,
+        "median": 332.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded (%)": {
+        "min": 0.0,
+        "max": 44.8864,
+        "mean": 29.062060000000002,
+        "median": 35.2941,
+        "count": 10,
+        "outliers_removed": 0
+      }
+    }
+  },
+  "lambda_1.0_loss_0": {
+    "lambda": "1.0",
+    "loss": "0",
+    "latency": {
+      "average": {
+        "min": 0.03368265288216727,
+        "max": 0.10544019937515259,
+        "mean": 0.051840975109386324,
+        "median": 0.0381575658149326,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "median": {
+        "min": 0.04946017265319824,
+        "max": 0.05048656463623047,
+        "mean": 0.049989163875579834,
+        "median": 0.05002450942993164,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 4.0,
+        "max": 445.0,
+        "mean": 311.6,
+        "median": 443.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Packets discarded": {
+        "min": 0.0,
+        "max": 33.0,
+        "mean": 22.5,
+        "median": 32.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Total packets received": {
+        "min": 4.0,
+        "max": 477.0,
+        "mean": 334.1,
+        "median": 475.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Packets discarded (%)": {
+        "min": 0.0,
+        "max": 6.962,
+        "mean": 4.73407,
+        "median": 6.7227,
+        "count": 10,
+        "outliers_removed": 0
+      }
+    }
+  },
+  "lambda_1.0_loss_10": {
+    "lambda": "1.0",
+    "loss": "10",
+    "latency": {
+      "average": {
+        "min": 0.03701462867153678,
+        "max": 0.0415389641257357,
+        "mean": 0.038747713605372706,
+        "median": 0.03806797142512702,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "median": {
+        "min": 0.049704551696777344,
+        "max": 0.05108237266540527,
+        "mean": 0.050430238246917725,
+        "median": 0.05037260055541992,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 208.0,
+        "max": 245.0,
+        "mean": 234.0,
+        "median": 241.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded": {
+        "min": 195.0,
+        "max": 207.0,
+        "mean": 198.66666666666666,
+        "median": 197.0,
+        "count": 6,
+        "outliers_removed": 4
+      },
+      "Total packets received": {
+        "min": 437.0,
+        "max": 447.0,
+        "mean": 441.0,
+        "median": 441.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded (%)": {
+        "min": 44.4191,
+        "max": 46.3087,
+        "mean": 45.06293333333334,
+        "median": 44.9772,
+        "count": 6,
+        "outliers_removed": 4
+      }
+    }
+  },
+  "lambda_1.0_loss_25": {
+    "lambda": "1.0",
+    "loss": "25",
+    "latency": {
+      "average": {
+        "min": 0.04290068628420033,
+        "max": 0.24848086363191058,
+        "mean": 0.07362610374605533,
+        "median": 0.04518337108020823,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "median": {
+        "min": 0.05055856704711914,
+        "max": 0.05306220054626465,
+        "mean": 0.05118221044540405,
+        "median": 0.050685882568359375,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 206.0,
+        "max": 218.0,
+        "mean": 209.28571428571428,
+        "median": 207.0,
+        "count": 7,
+        "outliers_removed": 3
+      },
+      "Packets discarded": {
+        "min": 149.0,
+        "max": 202.0,
+        "mean": 183.375,
+        "median": 188.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Total packets received": {
+        "min": 362.0,
+        "max": 408.0,
+        "mean": 395.125,
+        "median": 400.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded (%)": {
+        "min": 41.1602,
+        "max": 49.5098,
+        "mean": 46.335775,
+        "median": 47.5949,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    }
+  },
+  "lambda_1.0_loss_50": {
+    "lambda": "1.0",
+    "loss": "50",
+    "latency": {
+      "average": {
+        "min": 0.061339686779265705,
+        "max": 1.1185555143176384,
+        "mean": 0.36618861418824566,
+        "median": 0.15447664745454867,
+        "count": 9,
+        "outliers_removed": 1
+      },
+      "median": {
+        "min": 0.05195188522338867,
+        "max": 0.10205459594726562,
+        "mean": 0.05997684597969055,
+        "median": 0.0543975830078125,
+        "count": 8,
+        "outliers_removed": 2
+      }
+    },
+    "discards": {
+      "Packets accepted": {
+        "min": 185.0,
+        "max": 241.0,
+        "mean": 208.25,
+        "median": 215.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Packets discarded": {
+        "min": 79.0,
+        "max": 117.0,
+        "mean": 94.0,
+        "median": 86.0,
+        "count": 8,
+        "outliers_removed": 2
+      },
+      "Total packets received": {
+        "min": 12.0,
+        "max": 332.0,
+        "mean": 247.8,
+        "median": 286.0,
+        "count": 10,
+        "outliers_removed": 0
+      },
+      "Packets discarded (%)": {
+        "min": 24.9221,
+        "max": 35.241,
+        "mean": 31.270542857142857,
+        "median": 31.7343,
+        "count": 7,
+        "outliers_removed": 3
+      }
+>>>>>>> Stashed changes:packetloss_test_results/aggregated_results.json
     }
   }
 }
