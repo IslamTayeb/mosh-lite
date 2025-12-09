@@ -1,6 +1,11 @@
 __pycache__/
-.DS_STORE
+.DS_Store
 .venv
 *.pdf
 venv
 *.swp
+
+# testbed artifacts
+testbed/artifacts_*/
+testbed/logs_*/
+testbed/test_states.txt

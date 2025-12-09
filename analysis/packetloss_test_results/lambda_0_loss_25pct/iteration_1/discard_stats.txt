@@ -1,4 +1,0 @@
-Total packets received: 404
-Packets discarded: 200
-Packets accepted: 204
-Packets discarded (%): 49.5050

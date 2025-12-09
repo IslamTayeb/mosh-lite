@@ -1,4 +1,0 @@
-Total packets received: 324
-Packets discarded: 109
-Packets accepted: 215
-Packets discarded (%): 33.6420
